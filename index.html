@@ -287,23 +287,27 @@
                     </div>
                     <div class="fragment" style="margin-top: 20px;">
                         <p><strong>Dynamique de la vitesse (ARZ) :</strong></p>
-                        <p style="font-size: 1.2em;">\[ \frac{\partial w_i}{\partial t} + v_i \frac{\partial w_i}{\partial x} = \frac{V_{e,i} - v_i}{\tau_i} \]</p>
+                        <p style="font-size: 1.2em;">\[ \frac{\partial w_i}{\partial t} + v_i \frac{\partial
+                            w_i}{\partial x} = \frac{V_{e,i} - v_i}{\tau_i} \]</p>
                         <p style="font-size: 0.9em; margin-top: 10px;">avec \( w_i = v_i + p_i(\rho_m, \rho_c) \)</p>
                     </div>
                 </div>
                 <p style="margin-top: 20px; text-align: center; font-size: 0.8em;">
-                    Où <strong>\(\rho\)</strong> : densité, 
-                    <strong>\(v\)</strong> : vitesse, 
+                    Où <strong>\(\rho\)</strong> : densité,
+                    <strong>\(v\)</strong> : vitesse,
                     <strong>\(w\)</strong> : propriété transportée (vitesse + pression),<br>
-                    <strong>\(V_e\)</strong> : vitesse d'équilibre, 
+                    <strong>\(V_e\)</strong> : vitesse d'équilibre,
                     <strong>\(\tau\)</strong> : temps de relaxation
                 </p>
                 <aside class="notes">
                     Rapidement sur la physique : nous utilisons le modèle ARZ multi-classes.<br><br>
                     Il est constitué de deux équations pour chaque classe de véhicules (motos et voitures) :<br>
                     1. La conservation de la masse : les véhicules ne disparaissent pas.<br>
-                    2. L'équation de la dynamique : elle décrit comment la propriété \(w\) (qui combine vitesse et anticipation) est transportée par le flot.<br><br>
-                    Le terme de droite est crucial : c'est la relaxation. Il dit que les conducteurs tendent à ajuster leur vitesse vers une vitesse d'équilibre \(V_e\) qui dépend de la densité du trafic (et donc des autres véhicules).
+                    2. L'équation de la dynamique : elle décrit comment la propriété \(w\) (qui combine vitesse et
+                    anticipation) est transportée par le flot.<br><br>
+                    Le terme de droite est crucial : c'est la relaxation. Il dit que les conducteurs tendent à ajuster
+                    leur vitesse vers une vitesse d'équilibre \(V_e\) qui dépend de la densité du trafic (et donc des
+                    autres véhicules).
                 </aside>
             </section>
             <section>
@@ -425,7 +429,8 @@
             </section>
             <!-- SLIDE DEDIEE ANIMATION -->
             <section class="animation-slide" data-background-color="#1a1a2e">
-                <h2 style="text-align: center; margin-bottom: 10px; color: white; border-bottom-color: #D4AF37;">Simulation Temps Réel - Corridor Victoria Island</h2>
+                <h2 style="text-align: center; margin-bottom: 10px; color: white; border-bottom-color: #D4AF37;">
+                    Simulation Temps Réel - Corridor Victoria Island</h2>
                 <div class="animation-container" style="height: 75vh; border-color: #D4AF37; background: #1a1a2e;">
                     <iframe src="assets/animations/traffic_realistic.html" title="Simulation de trafic ARZ"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
@@ -435,12 +440,16 @@
 
                 <aside class="notes">
                     Voici une démonstration en temps réel de notre jumeau numérique.<br><br>
-                    Ce que vous voyez ici, c'est le modèle ARZ multi-classes en action sur le corridor de Victoria Island :<br>
+                    Ce que vous voyez ici, c'est le modèle ARZ multi-classes en action sur le corridor de Victoria
+                    Island :<br>
                     - Les <strong>traînées orange</strong> représentent les motos (70% du flux).<br>
                     - Les <strong>traînées vertes</strong> représentent les voitures.<br>
-                    - Les <strong>colonnes 3D</strong> aux intersections sont les feux de signalisation qui changent de couleur.<br><br>
-                    Observez comment le trafic ralentit naturellement aux intersections, et comment les ondes de densité se propagent vers l'amont (effet accordéon).<br><br>
-                    Cette visualisation tourne en temps réel dans votre navigateur. C'est le même type de dynamique que notre agent RL apprend à optimiser.
+                    - Les <strong>colonnes 3D</strong> aux intersections sont les feux de signalisation qui changent de
+                    couleur.<br><br>
+                    Observez comment le trafic ralentit naturellement aux intersections, et comment les ondes de densité
+                    se propagent vers l'amont (effet accordéon).<br><br>
+                    Cette visualisation tourne en temps réel dans votre navigateur. C'est le même type de dynamique que
+                    notre agent RL apprend à optimiser.
                 </aside>
             </section>
             <section>
