@@ -425,43 +425,8 @@
                 </aside>
             </section>
 
-            <!-- NEW BRIDGE SLIDE: INTRO TO DEMO -->
-            <section data-background-color="#0d1117" data-transition="fade">
-                <h2 style="color: #fff; margin-bottom: 40px;">Démonstration Temps Réel</h2>
-                <div style="display: flex; justify-content: center; align-items: flex-start; gap: 60px;">
-                    <div style="text-align: center; width: 200px;">
-                        <div style="font-size: 4em; margin-bottom: 20px; text-shadow: 0 0 20px rgba(253, 128, 93, 0.5);">🏍️</div>
-                        <h4 style="color: #FD805D; margin-bottom: 10px;">Motos (70%)</h4>
-                        <p style="color: #aaa; font-size: 0.7em; line-height: 1.4;">Rapides, agiles, comportement de "gap-filling"</p>
-                    </div>
-                    <div style="text-align: center; width: 200px;">
-                        <div style="font-size: 4em; margin-bottom: 20px; text-shadow: 0 0 20px rgba(23, 184, 190, 0.5);">🚗</div>
-                        <h4 style="color: #17B8BE; margin-bottom: 10px;">Voitures (30%)</h4>
-                        <p style="color: #aaa; font-size: 0.7em; line-height: 1.4;">Plus lentes, respectent les files</p>
-                    </div>
-                    <div style="text-align: center; width: 200px;">
-                        <div style="font-size: 4em; margin-bottom: 20px; text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);">🚦</div>
-                        <h4 style="color: #D4AF37; margin-bottom: 10px;">Feux IA</h4>
-                        <p style="color: #aaa; font-size: 0.7em; line-height: 1.4;">Adaptation dynamique aux flux</p>
-                    </div>
-                </div>
-                <div style="margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;">
-                    <p style="color: #666; font-style: italic; font-size: 0.6em;">
-                        Simulation du corridor de Victoria Island, Lagos
-                    </p>
-                </div>
-                <aside class="notes">
-                    Avant de lancer la simulation, voici les clés de lecture.<br><br>
-                    Nous allons passer dans un environnement sombre pour mieux visualiser les flux lumineux.<br>
-                    Vous verrez deux types d'agents :<br>
-                    - En Orange : Les motos. Elles sont majoritaires, rapides et se faufilent.<br>
-                    - En Cyan : Les voitures. Elles sont plus statiques.<br><br>
-                    C'est cette dynamique hétérogène que notre modèle mathématique reproduit.
-                </aside>
-            </section>
-
             <!-- SLIDE DEDIEE ANIMATION - PLEIN ECRAN -->
-            <section class="animation-slide" data-background-color="#0d1117" data-transition="fade"
+            <section class="animation-slide" data-background-color="#e8e8e8"
                 data-background-iframe="assets/animations/traffic_realistic.html" data-background-interactive>
                 <!-- Animation en plein écran via background-iframe de Reveal.js -->
                 <!-- L'utilisateur peut interagir avec la carte (zoom, pan) grâce à data-background-interactive -->
@@ -470,8 +435,8 @@
                     Voici une démonstration en temps réel de notre jumeau numérique.<br><br>
                     Ce que vous voyez ici, c'est le modèle ARZ multi-classes en action sur le corridor de Victoria
                     Island :<br>
-                    - Les <strong>traînées orange/corail</strong> représentent les motos (70% du flux).<br>
-                    - Les <strong>traînées cyan</strong> représentent les voitures.<br>
+                    - Les <strong>traînées orange</strong> représentent les motos (70% du flux).<br>
+                    - Les <strong>traînées bleues</strong> représentent les voitures.<br>
                     - Les <strong>colonnes 3D</strong> aux intersections sont les feux de signalisation qui changent de
                     couleur.<br><br>
                     Observez comment le trafic ralentit naturellement aux intersections, et comment les ondes de densité
@@ -480,7 +445,7 @@
                     notre agent RL apprend à optimiser.
                 </aside>
             </section>
-            <section data-transition="fade">
+            <section>
                 <h2>Validation H1 : Tests de Riemann</h2>
                 <div class="two-columns">
                     <div>
