@@ -286,21 +286,24 @@
                             v_i)}{\partial x} = 0 \]</p>
                     </div>
                     <div class="fragment" style="margin-top: 20px;">
-                        <p><strong>Conservation du momentum :</strong></p>
-                        <p style="font-size: 1.2em;">\[ \frac{\partial (\rho_i w_i)}{\partial t} + \frac{\partial
-                            (\rho_i
-                            w_i v_i)}{\partial x} = 0 \]</p>
+                        <p><strong>Dynamique de la vitesse (ARZ) :</strong></p>
+                        <p style="font-size: 1.2em;">\[ \frac{\partial w_i}{\partial t} + v_i \frac{\partial w_i}{\partial x} = \frac{V_{e,i} - v_i}{\tau_i} \]</p>
+                        <p style="font-size: 0.9em; margin-top: 10px;">avec \( w_i = v_i + p_i(\rho_m, \rho_c) \)</p>
                     </div>
                 </div>
-                <p style="margin-top: 20px; text-align: center;">Où <strong>rho</strong> = densité, <strong>v</strong> =
-                    vitesse, <strong>w</strong> = vitesse d'équilibre</p>
+                <p style="margin-top: 20px; text-align: center; font-size: 0.8em;">
+                    Où <strong>\(\rho\)</strong> : densité, 
+                    <strong>\(v\)</strong> : vitesse, 
+                    <strong>\(w\)</strong> : propriété transportée (vitesse + pression),<br>
+                    <strong>\(V_e\)</strong> : vitesse d'équilibre, 
+                    <strong>\(\tau\)</strong> : temps de relaxation
+                </p>
                 <aside class="notes">
-                    Rapidement sur la physique : nous utilisons le modèle ARZ.<br><br>
-                    Il a deux équations principales : la conservation de la masse (les véhicules ne disparaissent pas)
-                    et la conservation du momentum (qui gère l'accélération et l'inertie).<br><br>
-                    La subtilité, c'est que nous avons couplé les équations des motos et des voitures. La vitesse des
-                    motos dépend de la densité des voitures, et inversement. C'est ce couplage qui crée le réalisme de
-                    l'interaction.
+                    Rapidement sur la physique : nous utilisons le modèle ARZ multi-classes.<br><br>
+                    Il est constitué de deux équations pour chaque classe de véhicules (motos et voitures) :<br>
+                    1. La conservation de la masse : les véhicules ne disparaissent pas.<br>
+                    2. L'équation de la dynamique : elle décrit comment la propriété \(w\) (qui combine vitesse et anticipation) est transportée par le flot.<br><br>
+                    Le terme de droite est crucial : c'est la relaxation. Il dit que les conducteurs tendent à ajuster leur vitesse vers une vitesse d'équilibre \(V_e\) qui dépend de la densité du trafic (et donc des autres véhicules).
                 </aside>
             </section>
             <section>
@@ -493,8 +496,9 @@
                 <aside class="notes">
                     Ensuite, la validation systémique du jumeau numérique.<br><br>
                     Ces instantanés montrent l'évolution temporelle du trafic sur le corridor de Victoria Island.
-                    On observe clairement la propagation des ondes de choc (zones rouges) qui remontent le courant.<br><br>
-                    Le modèle reproduit les trois régimes de trafic : fluide, congestionné, et bouchonné. 
+                    On observe clairement la propagation des ondes de choc (zones rouges) qui remontent le
+                    courant.<br><br>
+                    Le modèle reproduit les trois régimes de trafic : fluide, congestionné, et bouchonné.
                     Cela confirme que notre jumeau numérique capture bien la phénoménologie réelle du trafic.
                 </aside>
             </section>
