@@ -31,79 +31,78 @@
             height: 100%;
         }
 
-        /* Overlay légende discrète en bas à gauche */
+        /* Overlay légende discrète en bas à gauche - THEME SOMBRE */
         .legend-overlay {
             position: absolute;
             bottom: 20px;
             left: 20px;
-            background: rgba(255, 255, 255, 0.92);
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            background: rgba(30, 30, 35, 0.95);
+            padding: 14px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
             z-index: 100;
-            font-size: 0.8em;
-            color: #333;
+            font-size: 0.85em;
+            color: #ffffff;
         }
 
         .legend-overlay h4 {
-            margin: 0 0 8px 0;
-            font-size: 0.85em;
-            color: #003370;
+            margin: 0 0 10px 0;
+            font-size: 0.9em;
+            color: #ffffff;
             font-weight: 600;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin: 4px 0;
+            gap: 10px;
+            margin: 6px 0;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .legend-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
         }
 
         .moto {
-            background: #E67E22;
-            box-shadow: 0 0 6px rgba(230, 126, 34, 0.6);
+            background: #F19436;
+            box-shadow: 0 0 8px rgba(241, 148, 54, 0.8);
         }
 
         .car {
-            background: #2980B9;
-            box-shadow: 0 0 6px rgba(41, 128, 185, 0.6);
+            background: #3498DB;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.8);
         }
 
-        /* Titre discret en haut */
+        /* Titre discret en haut - THEME SOMBRE */
         .title-overlay {
             position: absolute;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.92);
-            padding: 10px 24px;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 51, 112, 0.2);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            background: rgba(30, 30, 35, 0.95);
+            padding: 12px 28px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
             z-index: 100;
             text-align: center;
         }
 
         .title-overlay h2 {
             margin: 0;
-            font-size: 1em;
-            color: #003370;
+            font-size: 1.1em;
+            color: #ffffff;
             font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         .title-overlay span {
-            font-size: 0.75em;
-            color: rgba(0, 0, 0, 0.6);
-        }
-
-        color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.7);
         }
     </style>
 </head>
@@ -161,9 +160,13 @@
         }
 
         // Initialize deck.gl
+        // STYLES DISPONIBLES:
+        // - voyager-gl-style : Fond GRIS avec noms de rues NOIRS (salle éclairée)
+        // - dark-matter-gl-style : Fond NOIR avec noms de rues BLANCS (projection)
+        // - positron-gl-style : Fond BLANC avec noms de rues NOIRS (écran soleil)
         const deckgl = new DeckGL({
             container: 'container',
-            mapStyle: 'https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json',
+            mapStyle: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
             initialViewState: {
                 longitude: 3.4205,
                 latitude: 6.4295,
