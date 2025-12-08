@@ -408,7 +408,7 @@
                     </div>
                 </div>
                 <div class="highlight-box" style="margin-top: 20px; text-align: center;">
-                    <strong>Démonstration :</strong> <a href="assets/animations/traffic_dinguerie.html" target="_blank"
+                    <strong>Démonstration :</strong> <a href="assets/animations/traffic_realistic.html" target="_blank"
                         style="color: #D4AF37;">Lancer l'animation interactive ↗</a>
                 </div>
                 <aside class="notes">
@@ -424,22 +424,23 @@
                 </aside>
             </section>
             <!-- SLIDE DEDIEE ANIMATION -->
-            <section class="animation-slide" data-background-color="#f8f9fa">
-                <h2 style="text-align: center; margin-bottom: 15px;">Démonstration Interactive</h2>
-                <div class="animation-container">
-                    <iframe src="assets/animations/traffic_dinguerie.html" title="Simulation de trafic ARZ"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope">
+            <section class="animation-slide" data-background-color="#1a1a2e">
+                <h2 style="text-align: center; margin-bottom: 10px; color: white; border-bottom-color: #D4AF37;">Simulation Temps Réel - Corridor Victoria Island</h2>
+                <div class="animation-container" style="height: 75vh; border-color: #D4AF37; background: #1a1a2e;">
+                    <iframe src="assets/animations/traffic_realistic.html" title="Simulation de trafic ARZ"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+                        style="width: 100%; height: 100%; border: none;">
                     </iframe>
                 </div>
 
                 <aside class="notes">
-                    Voici une démonstration en temps réel de notre simulateur.<br><br>
-                    Ce que vous voyez ici, c'est le modèle ARZ en action. Les motos (en jaune) et les voitures (en bleu)
-                    interagissent selon les équations que nous avons décrites.<br><br>
-                    Observez comment les ondes de densité se propagent : quand un groupe ralentit, l'information
-                    remonte vers l'arrière. C'est exactement ce qu'on observe dans le trafic réel.<br><br>
-                    Cette animation n'est pas une vidéo pré-enregistrée : c'est le solveur numérique qui calcule
-                    chaque image. C'est le même moteur qui entraîne notre agent RL.
+                    Voici une démonstration en temps réel de notre jumeau numérique.<br><br>
+                    Ce que vous voyez ici, c'est le modèle ARZ multi-classes en action sur le corridor de Victoria Island :<br>
+                    - Les <strong>traînées orange</strong> représentent les motos (70% du flux).<br>
+                    - Les <strong>traînées vertes</strong> représentent les voitures.<br>
+                    - Les <strong>colonnes 3D</strong> aux intersections sont les feux de signalisation qui changent de couleur.<br><br>
+                    Observez comment le trafic ralentit naturellement aux intersections, et comment les ondes de densité se propagent vers l'amont (effet accordéon).<br><br>
+                    Cette visualisation tourne en temps réel dans votre navigateur. C'est le même type de dynamique que notre agent RL apprend à optimiser.
                 </aside>
             </section>
             <section>
