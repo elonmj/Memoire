@@ -102,7 +102,8 @@
             font-size: 0.75em;
             color: rgba(0, 0, 0, 0.6);
         }
-            color: rgba(255, 255, 255, 0.6);
+
+        color: rgba(255, 255, 255, 0.6);
         }
     </style>
 </head>
@@ -187,9 +188,9 @@
                     data: pathsData,
                     getPath: d => d.path,
                     getWidth: d => d.width,
-                    getColor: [100, 110, 130],
-                    widthMinPixels: 3,
-                    widthMaxPixels: 15,
+                    getColor: [90, 100, 120],
+                    widthMinPixels: 6,
+                    widthMaxPixels: 20,
                     capRounded: true,
                     jointRounded: true
                 }),
@@ -200,9 +201,9 @@
                     data: pathsData,
                     getPath: d => d.path,
                     getWidth: 1,
-                    getColor: [150, 160, 180],
-                    widthMinPixels: 1,
-                    getDashArray: [4, 4],
+                    getColor: [180, 190, 210],
+                    widthMinPixels: 2,
+                    getDashArray: [6, 4],
                     dashJustified: true
                 }),
 
@@ -225,39 +226,41 @@
                     id: 'traffic-lights-head',
                     data: trafficLightsData,
                     getPosition: d => [...d.position, 25],
-                    getRadius: 10,
+                    getRadius: 12,
                     getFillColor: (d, { index }) => lightColors[index],
-                    radiusMinPixels: 8,
-                    radiusMaxPixels: 14,
+                    radiusMinPixels: 12,
+                    radiusMaxPixels: 18,
                     pickable: false
                 }),
 
-                // Motos - orange trails (visible on light gray)
+                // Motos - orange trails (ENHANCED: thicker trails per deck.gl best practices)
                 new TripsLayer({
                     id: 'trips-motos',
                     data: tripsMotoData,
                     getPath: d => d.path,
                     getTimestamps: d => d.timestamps,
-                    getColor: [230, 126, 34],
-                    opacity: 0.95,
-                    widthMinPixels: 3,
-                    trailLength: 30,
+                    getColor: [241, 148, 54],
+                    opacity: 1.0,
+                    widthMinPixels: 8,
+                    trailLength: 80,
                     currentTime: currentTime,
-                    shadowEnabled: false
+                    shadowEnabled: false,
+                    fadeTrail: true
                 }),
 
-                // Cars - blue trails (visible on light gray)
+                // Cars - blue trails (ENHANCED: thicker trails per deck.gl best practices)
                 new TripsLayer({
                     id: 'trips-cars',
                     data: tripsCarsData,
                     getPath: d => d.path,
                     getTimestamps: d => d.timestamps,
-                    getColor: [41, 128, 185],
-                    opacity: 0.95,
-                    widthMinPixels: 5,
-                    trailLength: 40,
+                    getColor: [52, 152, 219],
+                    opacity: 1.0,
+                    widthMinPixels: 10,
+                    trailLength: 100,
                     currentTime: currentTime,
-                    shadowEnabled: false
+                    shadowEnabled: false,
+                    fadeTrail: true
                 })
             ];
 
