@@ -384,7 +384,7 @@
 }
 
 /* Séparateurs visuels */
-.reveal .speaker-notes br + br {
+.reveal .speaker-notes br+br {
     display: block;
     margin: 12px 0;
     content: "";
