@@ -350,11 +350,44 @@
     border-radius: 4px;
 }
 
-/* --- SPEAKER NOTES --- */
+/* --- SPEAKER NOTES (MODE PRÉSENTATEUR) --- */
+/* Ces styles s'appliquent dans la fenêtre du présentateur (touche S) */
 .reveal .speaker-notes {
-    font-family: inherit;
-    font-size: 18px;
-    line-height: 1.6;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 22px;
+    line-height: 1.8;
+    padding: 20px 30px;
+    background: #1a1a2e;
+    color: #f0f0f0;
+}
+
+/* Notes dans le mode présentateur - fenêtre notes */
+.reveal .speaker-notes-window .speaker-notes {
+    font-size: 24px;
+    line-height: 2;
+    padding: 30px 40px;
+}
+
+/* Styles pour la fenêtre présentateur complète */
+.speaker-controls-notes .value {
+    font-size: 22px !important;
+    line-height: 1.8 !important;
+    padding: 25px !important;
+    max-height: none !important;
+    overflow-y: auto !important;
+}
+
+/* Points clés en gras */
+.reveal .speaker-notes strong {
+    color: #ffc107;
+    font-weight: 700;
+}
+
+/* Séparateurs visuels */
+.reveal .speaker-notes br + br {
+    display: block;
+    margin: 12px 0;
+    content: "";
 }
 
 /* --- PRINT / PDF --- */

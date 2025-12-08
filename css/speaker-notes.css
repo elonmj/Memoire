@@ -1,0 +1,100 @@
+/**
+ * Styles personnalisés pour le mode présentateur Reveal.js
+ * Ces styles s'appliquent dans la fenêtre présentateur (touche S)
+ */
+
+/* ============================================
+   FENÊTRE DES NOTES - PLUS GRANDE ET LISIBLE
+   ============================================ */
+
+/* Container principal des notes */
+.speaker-controls-notes {
+    font-size: 20px !important;
+    line-height: 1.9 !important;
+}
+
+/* Zone de texte des notes */
+.speaker-controls-notes .value {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif !important;
+    font-size: 22px !important;
+    line-height: 1.9 !important;
+    padding: 25px 30px !important;
+    background: #1e1e2e !important;
+    color: #f5f5f5 !important;
+    border-radius: 8px !important;
+    max-height: 100% !important;
+    overflow-y: auto !important;
+}
+
+/* Mots clés importants en surbrillance */
+.speaker-controls-notes strong,
+.speaker-controls-notes b {
+    color: #ffc107 !important;
+    font-weight: 700 !important;
+}
+
+/* Meilleur espacement entre paragraphes */
+.speaker-controls-notes br {
+    display: block !important;
+    margin-bottom: 8px !important;
+    content: "" !important;
+}
+
+/* ============================================
+   LAYOUT DU MODE PRÉSENTATEUR
+   ============================================ */
+
+/* Donner plus d'espace aux notes vs preview */
+.reveal-viewport .speaker-layout-notes {
+    grid-template-rows: 40% 60% !important;
+}
+
+/* Slide actuelle - plus petite pour laisser place aux notes */
+.speaker-controls-slide.current-slide {
+    max-height: 35vh !important;
+}
+
+/* Notes - plus grandes */
+.speaker-controls-notes {
+    min-height: 50vh !important;
+    flex-grow: 1 !important;
+}
+
+/* ============================================
+   TIMING ET CONTRÔLES
+   ============================================ */
+
+/* Timer plus visible */
+.speaker-controls-time {
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    color: #4fc3f7 !important;
+}
+
+/* Numéro de slide */
+.speaker-controls-slide-number {
+    font-size: 18px !important;
+    color: #aaa !important;
+}
+
+/* ============================================
+   SCROLLBAR PERSONNALISÉE
+   ============================================ */
+
+.speaker-controls-notes .value::-webkit-scrollbar {
+    width: 10px;
+}
+
+.speaker-controls-notes .value::-webkit-scrollbar-track {
+    background: #2a2a3e;
+    border-radius: 5px;
+}
+
+.speaker-controls-notes .value::-webkit-scrollbar-thumb {
+    background: #4a4a6a;
+    border-radius: 5px;
+}
+
+.speaker-controls-notes .value::-webkit-scrollbar-thumb:hover {
+    background: #6a6a8a;
+}
