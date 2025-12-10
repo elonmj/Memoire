@@ -388,7 +388,7 @@
                     </div>
                     <div class="arch-arrow">&#8594;</div>
                     <div class="arch-box gold"><strong>Solveur</strong>
-                        <p>Central-Upwind WENO5</p>
+                        <p>Schéma WENO5</p>
                     </div>
                     <div class="arch-arrow">&#8594;</div>
                     <div class="arch-box green"><strong>Agent DQN</strong>
@@ -433,23 +433,136 @@
                     <strong>\(\tau\)</strong> : temps de relaxation
                 </p>
                 <aside class="notes">
-                    Rapidement sur la physique : le modèle ARZ multi-classes est au cœur de notre approche.<br><br>
-                    Pour chaque type de véhicule — motos et voitures — on utilise deux équations fondamentales.<br>
-                    D'abord, la conservation de la masse : cela signifie que les véhicules ne disparaissent pas, ils
-                    avancent et se répartissent sur la route.<br>
-                    Ensuite, la dynamique de la vitesse : cette équation décrit comment les conducteurs ajustent leur
-                    vitesse en fonction du trafic autour d'eux.<br><br>
-                    Un point clé : le terme de relaxation. Il exprime le fait que chaque conducteur tend à adapter sa
-                    vitesse vers une valeur d'équilibre, qui dépend de la densité du trafic. Plus il y a de monde, plus
-                    on ralentit.<br>
-                    C'est cette interaction entre anticipation et adaptation qui permet de modéliser fidèlement le
-                    comportement réel sur nos routes.
+                    Rapidement sur la physique. Nous utilisons le modèle ARZ multi-classes, qui se compose de deux
+                    équations fondamentales pour chaque classe de véhicules — motos et voitures.<br><br>
+                    La première équation, c'est la <strong>conservation de la masse</strong>. Elle traduit simplement
+                    que les véhicules
+                    ne disparaissent pas. Ils s'écoulent d'un endroit à un autre.<br>
+                    Le terme \(\rho \cdot v\) que vous voyez, c'est le <strong>flux de véhicules</strong> — le nombre de
+                    véhicules qui passent par seconde.<br>
+                    Il y a une relation fondamentale : quand la densité augmente (plus de véhicules), la vitesse diminue
+                    (on ralentit).
+                    C'est cette relation inverse qui garantit la conservation : le produit \(\rho \cdot v\) reste
+                    cohérent.<br><br>
+                    La deuxième équation décrit la <strong>dynamique de la vitesse</strong>. Elle explique comment la
+                    propriété \(w\) —
+                    qui combine à la fois la vitesse et une sorte d'anticipation du conducteur — est transportée par le
+                    flux de trafic.<br><br>
+                    Le terme de droite, c'est ce qu'on appelle la <strong>relaxation</strong>. Il dit que les
+                    conducteurs ne gardent pas
+                    une vitesse fixe. Non. Ils ajustent constamment leur vitesse vers une vitesse d'équilibre \(V_e\),
+                    qui dépend directement de la densité autour d'eux.<br>
+                    C'est ce comportement réaliste qui rend le modèle si puissant.<br><br>
+                    Maintenant, comment résoudre ces équations numériquement ? C'est ce que nous allons voir.
                 </aside>
             </section>
             <section>
-                <h2>Schéma Numérique (Volumes Finis)</h2>
+                <h2>Discrétisation Spatiale : Volumes Finis</h2>
+                <div style="margin-top: 30px;">
+                    <p style="text-align: left; font-size: 0.9em;">
+                        Le domaine spatial est divisé en cellules \( C_i = [x_{i-1/2}, x_{i+1/2}] \).<br>
+                        On suit l'évolution du <strong>vecteur moyen</strong> \( \mathbf{U}_i^n = (\rho_i, y_i)^T \)
+                        dans chaque cellule.
+                    </p>
+
+                    <div
+                        style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin: 30px auto; width: 80%; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                        <p style="font-size: 1.3em; margin: 0;">
+                            \[ \mathbf{U}_i^{n+1} = \mathbf{U}_i^n - \frac{\Delta t}{\Delta x} \left( \mathbf{F}_{i+1/2}
+                            - \mathbf{F}_{i-1/2} \right) \]
+                        </p>
+                    </div>
+
+                    <!-- SVG Diagram -->
+                    <div style="margin: 40px auto; width: 80%;">
+                        <svg width="100%" height="220" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"
+                                    markerUnits="strokeWidth">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#e74c3c" />
+                                </marker>
+                            </defs>
+
+                            <!-- Main horizontal line -->
+                            <line x1="50" y1="120" x2="550" y2="120" stroke="#333" stroke-width="2" />
+
+                            <!-- Vertical ticks (Interfaces) -->
+                            <line x1="200" y1="100" x2="200" y2="140" stroke="#333" stroke-width="2" />
+                            <line x1="400" y1="100" x2="400" y2="140" stroke="#333" stroke-width="2" />
+
+                            <!-- Dashed lines for other interfaces -->
+                            <line x1="50" y1="110" x2="50" y2="130" stroke="#999" stroke-width="1"
+                                stroke-dasharray="5,5" />
+                            <line x1="550" y1="110" x2="550" y2="130" stroke="#999" stroke-width="1"
+                                stroke-dasharray="5,5" />
+
+                            <!-- Cell Labels -->
+                            <text x="125" y="170" font-family="Arial" font-size="20" fill="#7f8c8d"
+                                text-anchor="middle">\( C_{i-1} \)</text>
+                            <text x="300" y="170" font-family="Arial" font-size="24" fill="#2c3e50" font-weight="bold"
+                                text-anchor="middle">\( C_i \)</text>
+                            <text x="475" y="170" font-family="Arial" font-size="20" fill="#7f8c8d"
+                                text-anchor="middle">\( C_{i+1} \)</text>
+
+                            <!-- Average Value U_i visual representation -->
+                            <rect x="205" y="80" width="190" height="40" fill="rgba(52, 152, 219, 0.15)" rx="5" />
+                            <text x="300" y="105" font-family="Arial" font-size="18" fill="#2980b9"
+                                text-anchor="middle">\(\mathbf{U}_i\)</text>
+
+                            <!-- Flux Arrows -->
+                            <!-- F_{i-1/2} -->
+                            <line x1="160" y1="60" x2="240" y2="60" stroke="#e74c3c" stroke-width="3"
+                                marker-end="url(#arrow)" />
+                            <text x="200" y="45" font-family="Arial" font-size="18" fill="#e74c3c"
+                                text-anchor="middle">\(\mathbf{F}_{i-1/2}\)</text>
+
+                            <!-- F_{i+1/2} -->
+                            <line x1="360" y1="60" x2="440" y2="60" stroke="#e74c3c" stroke-width="3"
+                                marker-end="url(#arrow)" />
+                            <text x="400" y="45" font-family="Arial" font-size="18" fill="#e74c3c"
+                                text-anchor="middle">\(\mathbf{F}_{i+1/2}\)</text>
+
+                            <!-- Interface Labels -->
+                            <text x="200" y="200" font-family="Arial" font-size="16" fill="#666" text-anchor="middle">\(
+                                x_{i-1/2} \)</text>
+                            <text x="400" y="200" font-family="Arial" font-size="16" fill="#666" text-anchor="middle">\(
+                                x_{i+1/2} \)</text>
+                        </svg>
+                    </div>
+
+                    <p class="fragment" style="font-size: 0.8em; color: #e74c3c; margin-top: 20px;">
+                        <strong>Problème :</strong> Le flux numérique \( \mathbf{F}_{i+1/2} \) à l'interface est
+                        inconnu.<br>
+                        Il doit être <em>reconstruit</em> à partir des moyennes voisines pour garantir la stabilité.
+                    </p>
+                </div>
+
+                <aside class="notes">
+                    Pour résoudre ce système d'équations, nous utilisons la méthode des <strong>Volumes
+                        Finis</strong>.<br><br>
+
+                    On découpe la route en petites cellules. Dans chaque cellule, on stocke un <strong>vecteur
+                        d'état</strong> \( \mathbf{U}_i \).<br>
+                    Ce vecteur contient deux choses : la <strong>densité</strong> \(\rho\) (combien de véhicules par
+                    mètre) et la <strong>quantité de mouvement</strong> \(y = \rho \cdot v\).<br><br>
+
+                    L'équation dit simplement ceci : la variation de ce vecteur d'état dans une cellule ne dépend que de
+                    ce qui entre et sort par ses frontières.<br>
+                    C'est ce qu'on appelle le <strong>flux numérique</strong> \(\mathbf{F}\) — attention, ce n'est pas
+                    directement le "débit de voitures", mais le taux de transfert mathématique de nos deux grandeurs
+                    conservées.<br><br>
+
+                    Tout le défi est là : on connaît les moyennes dans chaque cellule, mais pas la valeur exacte à la
+                    frontière.<br>
+                    Il faut donc <strong>reconstruire</strong> ce flux \(\mathbf{F}_{i+1/2}\) à l'interface. Si on fait
+                    ça grossièrement, les ondes de choc deviennent floues.<br>
+                    C'est pourquoi nous avons besoin d'une méthode de haute précision : le schéma WENO5.
+                </aside>
+            </section>
+            <section>
+                <h2>Haute Précision : Schéma WENO5</h2>
                 <div class="two-columns" style="align-items: flex-start;">
-                    <div style="flex: 1;">
+                    <div style="flex: 0.8;">
                         <div class="card">
                             <h4>Cadre FVM + WENO5</h4>
                             <ul>
@@ -458,32 +571,41 @@
                             </ul>
                         </div>
                         <div class="card" style="margin-top: 15px;">
-                            <h4>SSP-RK3</h4>
-                            <ul>
-                                <li>Stabilité garantie</li>
-                                <li>Préservation de positivité</li>
-                            </ul>
+                            <h4>Reconstruction du flux</h4>
+                            <div style="padding: 10px; background: #f8f9fa; border-radius: 5px; margin-top: 5px;">
+                                \[ \hat{f}_{i+1/2} = \sum_{k=0}^{2} \omega_k q_k \]
+                            </div>
+                            <p style="font-size: 0.75em; color: #666; margin-top: 5px;">
+                                où \(\omega_k\) sont les <em>poids non-linéaires</em> adaptatifs
+                            </p>
                         </div>
                     </div>
-                    <div style="flex: 1.5; text-align: center;">
+                    <div style="flex: 2; text-align: center;">
                         <img src="assets/weno5_fvm_animation.gif" alt="Animation WENO5 vs Upwind sur maillage FVM"
-                            style="max-height: 350px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                            style="max-height: 450px; width: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
                         <p style="font-size: 0.6em; color: #666; margin-top: 8px;">
-                            Advection d'un créneau : WENO5 (rouge) préserve les discontinuités
+                            Advection d'un créneau : WENO5 (rouge) préserve les discontinuités contrairement au schéma
+                            dissipatif (bleu)
                         </p>
                     </div>
                 </div>
                 <aside class="notes">
-                    Pour résoudre ces équations, nous utilisons la méthode des Volumes Finis (FVM).<br><br>
-                    C'est le cadre qui garantit que les véhicules ne disparaissent pas (conservation).<br>
-                    À l'intérieur de ce cadre, nous utilisons la reconstruction WENO5. C'est le "moteur" de précision
-                    qui permet de capturer les ondes de choc (freinages brusques) sans créer d'oscillations numériques
-                    fausses.<br><br>
-                    Comme vous le voyez sur l'animation : le schéma classique Upwind (en bleu) diffuse tout, le créneau
-                    devient une colline.
-                    WENO5 (en rouge) garde la netteté du signal.<br><br>
-                    Ce couple FVM + WENO5 est indispensable pour que la simulation soit stable et que l'IA apprenne sur
-                    une physique correcte.
+                    Nous avons vu que le défi est de reconstruire le flux \(\mathbf{F}_{i+1/2}\) à l'interface.<br><br>
+
+                    Si on utilise une méthode simple — comme le schéma "Upwind" du premier ordre (courbe bleue) — on
+                    <strong>diffuse</strong> l'information.<br>
+                    Regardez l'animation : un bouchon qui devrait être net devient flou, étalé. On perd la
+                    physique.<br><br>
+
+                    C'est pourquoi nous utilisons la reconstruction <strong>WENO5</strong> — ordre 5.<br>
+                    La formule à gauche montre le principe : on calcule une moyenne pondérée de trois reconstructions
+                    candidates.<br>
+                    Les coefficients \(\omega_k\) s'adaptent <strong>automatiquement</strong> : si une discontinuité (un
+                    choc) est détectée, le poids de la reconstruction problématique s'annule.<br><br>
+
+                    Résultat : la courbe rouge reste <strong>nette</strong>. Les ondes de choc sont préservées.<br>
+                    C'est cette précision qui permet à notre IA de "voir" correctement les bouchons et d'agir au bon
+                    moment.
                 </aside>
             </section>
 
@@ -514,39 +636,6 @@
                     Il prend une action : laisser vert ou passer au rouge.<br>
                     Et il reçoit une récompense : plus le trafic coule, plus il gagne de points. Il apprend ainsi par
                     essai-erreur à maximiser la fluidité globale.
-                </aside>
-            </section>
-            <section>
-                <h2>Clarification : Vers un Jumeau Numérique</h2>
-                <div class="two-columns">
-                    <div class="card" style="border-left: 4px solid #003370;">
-                        <h4>Vision à Long Terme</h4>
-                        <ul>
-                            <li>Capteurs temps réel (IoT)</li>
-                            <li>Données massives pour calibration</li>
-                            <li>Connexion bidirectionnelle</li>
-                        </ul>
-                    </div>
-                    <div class="card" style="border-left: 4px solid #D4AF37;">
-                        <h4>Notre Approche Actuelle</h4>
-                        <ul>
-                            <li>Moteur physique validé (ARZ)</li>
-                            <li>Intelligence opérationnelle (RL)</li>
-                            <li><strong>Plateforme logicielle</strong></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Link removed for smoother flow, kept in notes if needed -->
-                <aside class="notes">
-                    Alors, une précision importante sur le terme "Jumeau Numérique".<br><br>
-                    On pourrait penser que c'est un mot un peu à la mode, peut-être exagéré. Mais pour nous, c'est un
-                    choix délibéré.<br>
-                    Notre stratégie a été de construire d'abord le <strong>cerveau</strong> du système. Ce que nous
-                    avons là n'est pas une simple animation ; c'est le moteur de décision, qui contient déjà toute la
-                    physique de notre trafic si particulier.<br><br>
-                    Ce moteur est prêt. Demain, nous pouvons le brancher à des capteurs réels. Ce que nous avons bâti,
-                    ce n'est pas juste un simulateur pour un article. C'est la <strong>première pierre</strong> d'un
-                    vrai système de gestion intelligente du trafic pour nos villes.
                 </aside>
             </section>
 
@@ -602,23 +691,20 @@
                 <h2>Validation H2 : Dynamique du Réseau</h2>
                 <div style="margin-bottom: 10px; font-size: 0.8em; color: #666;">Corridor : Victoria Island (Lagos,
                     Nigéria)</div>
-                <div class="two-columns" style="align-items: center;">
-                    <div style="flex: 1.6;">
+                <div style="display: flex; align-items: center; gap: 30px;">
+                    <div style="flex: 4;">
                         <img src="assets/network_snapshots.png" alt="Instantanés du réseau"
-                            style="max-height: 450px; width: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+                            style="max-height: 520px; width: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); display: block;">
                     </div>
-                    <div style="flex: 1; font-size: 0.85em; padding-left: 20px;">
-                        <h4>Observations</h4>
-                        <ul style="margin-bottom: 20px;">
-                            <li>Propagation des ondes de choc</li>
-                            <li>Hétérogénéité spatiale capturée</li>
-                            <li>Stabilité globale du système</li>
-                        </ul>
-                        <h4>3 régimes reproduits</h4>
-                        <ul style="list-style: none; padding-left: 0;">
-                            <li style="color: #27ae60; font-weight: bold;">&#9679; Fluide (vert vif)</li>
-                            <li style="color: #f39c12; font-weight: bold;">&#9679; Congestion (orange)</li>
-                            <li style="color: #e74c3c; font-weight: bold;">&#9679; Bouchon (rouge)</li>
+                    <div
+                        style="flex: 0.6; font-size: 0.95em; display: flex; flex-direction: column; justify-content: center; min-width: 160px;">
+                        <h4 style="margin: 0 0 12px 0; font-size: 1em;">3 régimes reproduits</h4>
+                        <ul style="list-style: none; padding-left: 0; margin: 0;">
+                            <li style="color: #27ae60; font-weight: bold; margin: 10px 0;">&#9679; Fluide (vert vif)
+                            </li>
+                            <li style="color: #f39c12; font-weight: bold; margin: 10px 0;">&#9679; Congestion (orange)
+                            </li>
+                            <li style="color: #e74c3c; font-weight: bold; margin: 10px 0;">&#9679; Bouchon (rouge)</li>
                         </ul>
                     </div>
                 </div>
@@ -799,7 +885,60 @@
                     La limite principale reste le manque de données réelles pour calibrer finement les
                     paramètres.<br><br>
                     Mais les perspectives sont là : on peut tester d'autres algorithmes d'IA, étendre la simulation à
-                    tout un quartier, et à terme, connecter de vrais capteurs.
+                    tout un quartier, et à terme, connecter de vrais capteurs.<br><br>
+                    Et justement, permettez-moi de vous montrer concrètement à quoi ressemblerait l'avenir que nous
+                    voulons construire...
+                </aside>
+            </section>
+
+            <!-- SLIDE VISION - APRÈS PERSPECTIVES -->
+            <section data-background-image="assets/traffic_police_accra.jpg" data-background-size="cover"
+                data-background-opacity="0.25" data-background-color="#1a1a2e">
+                <h2 style="color: #ecf0f1;">Perspective : Le Jumeau Numérique de Demain</h2>
+                <blockquote
+                    style="font-size: 0.85em; border-left: 4px solid #D4AF37; padding-left: 20px; margin: 20px 0; font-style: italic; color: #ecf0f1; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px;">
+                    « Un jumeau numérique est une représentation virtuelle d'un système physique qui utilise des données
+                    temps réel pour refléter fidèlement son comportement, sa performance et ses conditions. »
+                    <br><span style="font-size: 0.8em; color: #bdc3c7;">— Définition industrielle (IBM, NASA,
+                        Siemens)</span>
+                </blockquote>
+                <div class="two-columns">
+                    <div class="card"
+                        style="border-left: 4px solid #27ae60; background: rgba(255,255,255,0.98); color: #0f2538;">
+                        <h4 style="color:#0f2538;">✓ Ce que nous avons bâti</h4>
+                        <ul style="color:#1a2d3a;">
+                            <li>Moteur physique ARZ validé</li>
+                            <li>Intelligence RL opérationnelle</li>
+                            <li>Plateforme logicielle prête</li>
+                        </ul>
+                    </div>
+                    <div class="card"
+                        style="border-left: 4px solid #3498db; background: rgba(255,255,255,0.98); color: #0f2538;">
+                        <h4 style="color:#0f2538;">→ Ce qui reste à construire</h4>
+                        <ul style="color:#1a2d3a;">
+                            <li>Capteurs IoT temps réel</li>
+                            <li>Données massives de calibration</li>
+                            <li>Communauté locale engagée</li>
+                        </ul>
+                    </div>
+                </div>
+                <aside class="notes">
+                    Imaginez un lundi matin, 7h, au carrefour IITA à Abomey-Calavi.<br><br>
+                    C'est l'heure de pointe. Des centaines de motos et de voitures convergent depuis Tankpè vers
+                    Cotonou, tandis que d'autres remontent vers l'Étoile Rouge.<br><br>
+                    Aujourd'hui, un policier fait ce qu'il peut, avec son sifflet et son intuition. Il ne sait pas ce
+                    qui arrive depuis Tankpè, il ne peut pas anticiper.<br><br>
+                    Imaginez maintenant notre système, déployé sur tous les feux du réseau. Le feu au carrefour IITA
+                    <em>sait</em> qu'une vague de trafic arrive de Tankpè. Il <em>sait</em> aussi que le flux vers
+                    l'Étoile Rouge est en train de se saturer. Et il décide : « Je vais retenir le flux Nord 15 secondes
+                    de plus pour laisser passer la vague Est. »<br><br>
+                    C'est cela, un jumeau numérique complet : un système qui voit, qui comprend, et qui agit en temps
+                    réel.<br><br>
+                    Ce que nous avons construit aujourd'hui, c'est le <strong>cerveau</strong> de ce système. Le moteur
+                    de décision, la physique du trafic, l'intelligence artificielle.<br><br>
+                    Ce qui manque ? Des capteurs, des données massives pour affiner les paramètres, et une communauté de
+                    chercheurs et d'ingénieurs locaux pour porter ce projet.<br><br>
+                    Mais la fondation est là. Elle est solide. Et elle est prête à être connectée au monde réel.
                 </aside>
             </section>
             <section>
