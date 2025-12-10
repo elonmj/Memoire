@@ -57,13 +57,21 @@
                 </div>
 
                 <aside class="notes">
-                    Monsieur le Président du Jury, Honorables membres, Chers Maîtres.<br><br>
-                    Nous avons l'honneur de vous présenter aujourd'hui les résultats de notre travail de fin
-                    d'études.<br>
+                    Merci Monsieur le Président du Jury de m'avoir donné la parole.<br>
+                    Excellence Monsieur le Président du Jury, honorables membres du Jury, chers parents, amis et
+                    invités, bonjour et merci de votre présence.<br><br>
+
+                    Je suis Elonm Josaphat AHOUANYE, et j'ai l'honneur de vous présenter aujourd'hui le travail de fin
+                    de ma formation d'Ingénieur de Conception en Informatique, Logistique et Recherche
+                    Opérationnelle.<br><br>
+
                     Il porte sur la conception d'un "Jumeau Numérique pour le Trafic Ouest-Africain", et son utilisation
                     pour optimiser les feux de signalisation grâce à l'Intelligence Artificielle.<br><br>
-                    Ce travail a été mené sous la direction du Dr. Abel KONNON et l'encadrement technique du Dr. Régis
-                    Donald HONTINFINDE.
+                    Il a été réalisé
+                    sous la supervision du Dr. Abel KONNON et l'encadrement du Dr. Ing. Regis Donald
+                    HONTINFINDE.<br><br> que je tiens à remercier tout particulièrement pour son suivi rigoureux tout au
+                    long de ce projet.
+
                 </aside>
             </section>
             <section>
@@ -76,43 +84,146 @@
                     <li><strong>Conclusion</strong> - Contributions et perspectives</li>
                 </ol>
                 <aside class="notes">
-                    Pour cette présentation, nous suivrons une démarche classique en cinq points.<br><br>
-                    D'abord le contexte, pour comprendre pourquoi les solutions actuelles ne suffisent pas.<br>
+                    Pour cette présentation, nous suivrons une démarche classique.<br><br>
+                    Nous commencerons par le contexte et une revue de la littérature, pour comprendre pourquoi les
+                    solutions actuelles ne suffisent pas.<br>
                     Ensuite, la méthodologie : comment nous avons construit ce simulateur.<br>
                     Puis les résultats, pour voir si l'IA apporte vraiment un gain.<br>
                     Et enfin, les perspectives que ce travail ouvre pour nos villes.
                 </aside>
             </section>
-            <section>
-                <h2>Le Défi du Trafic Ouest-Africain</h2>
-                <div class="two-columns">
-                    <div>
-                        <h4>Un contexte unique</h4>
-                        <ul>
-                            <li><strong>70%+</strong> des déplacements en deux-roues</li>
-                            <li>Comportements spécifiques : gap-filling, interweaving</li>
-                            <li>Infrastructure hétérogène</li>
-                            <li>Croissance urbaine rapide</li>
-                        </ul>
-                        <h4 style="margin-top: 20px;">Conséquences</h4>
-                        <ul>
-                            <li>Congestion chronique</li>
-                            <li>Pertes économiques</li>
-                            <li>Pollution atmosphérique</li>
-                        </ul>
+
+            <!-- SLIDE ACCROCHE - CHIFFRES CHOCS (DONNÉES VÉRIFIÉES) -->
+            <section data-background-image="assets/traffic_dense_motos.jpg" data-background-size="cover"
+                data-background-opacity="0.35" data-background-color="#1a1a2e">
+
+                <!-- LA QUESTION (seule, en grand) -->
+                <div style="margin: 20px auto 30px; max-width: 900px;">
+                    <h2 style="font-size: 1.8em; color: #ecf0f1; font-weight: 400;">
+                        Contexte Ouest-Africain
+                    </h2>
+                </div>
+
+                <!-- LES STATS PRINCIPALES (3 colonnes) -->
+                <div
+                    style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; max-width: 1100px; margin: 30px auto;">
+
+                    <!-- Temps perdu Lagos -->
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.8em; font-weight: bold; color: #e67e22; line-height: 1.1;">2h21</div>
+                        <p style="font-size: 1em; margin-top: 12px; color: #ecf0f1;">perdues <strong>chaque
+                                jour</strong> dans les embouteillages</p>
+                        <p style="font-size: 0.75em; color: #95a5a6; margin-top: 8px;">Lagos, Nigeria (Danne Institute
+                            2023)</p>
                     </div>
-                    <div>
-                        <img src="assets/traffic_jam_before_rl.jpg" alt="Trafic mixte Lagos"
-                            style="max-height: 280px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+
+                    <!-- Coût économique Lagos -->
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5em; font-weight: bold; color: #e74c3c; line-height: 1.1;">4.8 Mds $
+                        </div>
+                        <p style="font-size: 1em; margin-top: 12px; color: #ecf0f1;">de pertes économiques <strong>par
+                                an</strong></p>
+                        <p style="font-size: 0.7em; color: #bdc3c7; margin-top: 4px;">(≈ 2 900 milliards FCFA)</p>
+                        <p style="font-size: 0.75em; color: #95a5a6; margin-top: 8px;">4% du PIB nigérian (Lagos State
+                            Gov. 2025)</p>
+                    </div>
+
+                    <!-- Mortalité routière Bénin -->
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.8em; font-weight: bold; color: #f39c12; line-height: 1.1;">26.8</div>
+                        <p style="font-size: 1em; margin-top: 12px; color: #ecf0f1;">décès routiers <strong>/100 000
+                                hab.</strong></p>
+                        <p style="font-size: 0.75em; color: #95a5a6; margin-top: 8px;">Bénin (OMS/Banque Mondiale 2019)
+                        </p>
                     </div>
                 </div>
+
+                <!-- LIGNE SECONDAIRE - Contexte Afrique -->
+                <div style="margin-top: 25px; text-align: center;">
+                    <p style="font-size: 0.95em; color: #bdc3c7; margin: 0;">
+                        <strong style="color: #e74c3c;">L'Afrique :</strong> région avec le <strong>plus haut taux
+                            mondial</strong> de mortalité routière
+                        <span style="color: #7f8c8d;">— OMS 2023</span>
+                    </p>
+                </div>
+
+                <!-- SOURCES -->
+                <p class="fragment"
+                    style="font-size: 0.55em; color: #7f8c8d; margin-top: 25px; font-style: italic; line-height: 1.4; max-width: 950px; margin-left: auto; margin-right: auto;">
+                    Sources vérifiées :
+                    <a href="https://danneinstitute.org/publications/always-go-with-a-smile-4/" target="_blank"
+                        style="color: #3498db;">Danne Institute for Research (2023)</a> •
+                    <a href="https://nairametrics.com/2025/06/13/lagos-govt-says-residents-lose-n4-trillion-annually-to-traffic-congestion/"
+                        target="_blank" style="color: #3498db;">Lagos State Government (2025)</a> •
+                    <a href="https://www.ceicdata.com/en/benin/social-health-statistics/bj-mortality-caused-by-road-traffic-injury-per-100000-people"
+                        target="_blank" style="color: #3498db;">Banque Mondiale/OMS (2019)</a>
+                </p>
+
                 <aside class="notes">
-                    Le point de départ, c'est un constat que nous vivons tous au quotidien. Le trafic à Cotonou ou Lagos
-                    n'a rien à voir avec celui de Paris ou de New York.<br><br>
-                    La différence majeure, c'est l'hétérogénéité. Les motos (les "zems") représentent plus de 70% du
-                    flux. Elles se faufilent, changent de voie, créent une dynamique très fluide mais chaotique.<br><br>
-                    Nos infrastructures peinent à suivre, et cela crée la congestion chronique que nous connaissons,
-                    avec son lot de pollution et de pertes économiques pour le pays.
+                    Monsieur le Président du Jury, honorables membres du jury <br><br>
+                    Qui, dans cette salle, n'a jamais ressenti la frustration de perdre un temps précieux dans les
+                    embouteillages ?
+                    Sachez que vous n'êtes pas seuls.<br><br>
+                    Chaque matin, des millions de personnes en Afrique de l'Ouest, sont
+                    coincés dans des embouteillages interminables, les go slow.<br><br>
+
+                    À Lagos — la plus grande ville d'Afrique — les habitants perdent en moyenne
+                    <strong>2 heures 21 minutes PAR JOUR</strong> dans les bouchons.
+                    Pas par semaine. PAR JOUR.<br><br>
+
+                    Faites le calcul : ça représente plus de <strong>850 heures par an</strong>.
+                    C'est l'équivalent de 35 jours complets passés... à ne rien faire d'autre qu'attendre.<br><br>
+
+                    Et le coût ? <strong>4,8 milliards de dollars</strong> perdus chaque année,
+                    soit près de <strong>2 900 milliards de francs CFA</strong>.
+                    Pour une seule ville. C'est 4% du PIB du Nigeria entier qui part en fumée dans les pots
+                    d'échappement.<br><br>
+
+                    Et chez nous au Bénin ? 26,8 décès routiers pour 100 000 habitants.
+
+                    C'est ce problème — à la fois humain et économique — qui a motivé notre travail.
+                </aside>
+            </section>
+
+            <!-- SLIDE TRAFIC - CONTEXTE UNIQUE -->
+            <section>
+                <h2>Le Défi du Trafic Ouest-Africain</h2>
+                <div class="two-columns" style="align-items: flex-start; margin-top: 30px;">
+                    <div style="flex: 1;">
+                        <h4>Un contexte unique</h4>
+                        <ul>
+                            <li><strong>70%+</strong> des déplacements en <strong>motos</strong>
+                                <span style="font-size: 0.7em; color: #7f8c8d;"><br>(SSATP/Banque Mondiale, 2021)</span>
+                            </li>
+                            <li>Comportements spécifiques : <em>gap-filling</em>, <em>interweaving</em></li>
+                            <li>Infrastructure hétérogène</li>
+                            <li>Croissance urbaine rapide (+4%/an)</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4>Conséquences</h4>
+                        <ul>
+                            <li>Congestion chronique</li>
+                            <li>Pertes économiques massives</li>
+                            <li>Pollution atmosphérique</li>
+                            <li>Accidents mortels</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 30px; text-align: center;">
+                    <strong>Enjeu :</strong> Un trafic fondamentalement différent des modèles occidentaux
+                </div>
+                <aside class="notes">
+                    Ce qui rend notre trafic unique, c'est sa composition.<br><br>
+                    Selon les études de la Banque Mondiale et du programme SSATP, plus de <strong>70% des déplacements
+                        urbains</strong>
+                    dans des villes comme Cotonou, Douala ou Lomé se font en <strong>motos</strong>.<br>
+
+                    Ces conducteurs ont des comportements très différents des voitures :
+                    ils remplissent chaque espace libre entre les véhicules — c'est le <em>gap-filling</em> —,
+                    et ils changent de file en permanence — c'est l'<em>interweaving</em>.<br><br>
+                    Cette hétérogénéité rend le trafic imprévisible et difficile à modéliser avec les outils
+                    classiques conçus pour des flux homogènes de voitures.
                 </aside>
             </section>
             <section>
@@ -135,11 +246,18 @@
                     <strong>GAP :</strong> Aucun jumeau numérique adapté au contexte ouest-africain
                 </div>
                 <aside class="notes">
-                    Le problème, c'est que nos outils de gestion actuels ne sont pas adaptés à cette réalité.<br><br>
-                    Les feux sont à temps fixe : ils sont "aveugles", ils ne voient pas le trafic.<br>
-                    Et les logiciels de simulation qu'on importe sont calibrés pour des voitures, en Occident. Ils ne
-                    savent pas simuler correctement le comportement d'une nuée de motos.<br><br>
-                    Il y a donc un manque criant d'outils technologiques adaptés à *notre* contexte.
+                    Le problème, c'est que nos systèmes de gestion actuels ne sont pas adaptés à cette réalité.<br><br>
+
+                    Prenez les feux tricolores : ils fonctionnent à temps fixe.
+                    Ils passent au vert pendant 30 secondes, puis au rouge pendant 30 secondes...
+                    peu importe qu'il y ait 10 voitures ou 500 motos qui attendent.
+                    Ils sont "aveugles" — ils ne voient pas le trafic réel.<br><br>
+
+                    Et côté outils scientifiques ? Les modèles de simulation existants ont été conçus
+                    pour des flux de voitures homogènes, comme en Europe ou aux États-Unis.
+                    Ils ne savent tout simplement pas représenter notre réalité mixte motos-voitures.<br><br>
+
+                    C'est ce double gap — technologique et scientifique — que nous avons voulu combler.
                 </aside>
             </section>
             <section>
@@ -150,20 +268,22 @@
                         <ol>
                             <li>Comment modéliser le trafic hétérogène ?</li>
                             <li>Comment valider sans données complètes ?</li>
-                            <li>L'IA peut-elle dépasser les feux fixes ?</li>
+                            <li>L'Agent DQN peut-il dépasser les feux fixes ?</li>
                         </ol>
                     </div>
                     <div>
                         <h4>Hypothèses</h4>
-                        <ul>
-                            <li><strong>H1</strong> - Le modèle ARZ étendu capture la dynamique</li>
-                            <li><strong>H2</strong> - Le jumeau reproduit les comportements réels</li>
-                            <li><strong>H3</strong> - L'agent RL dépasse les feux fixes</li>
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li style="margin-bottom: 10px;"><strong>Soit H1 :</strong> Le modèle ARZ étendu capture la
+                                dynamique</li>
+                            <li style="margin-bottom: 10px;"><strong>Soit H2 :</strong> Le jumeau reproduit les
+                                comportements réels</li>
+                            <li><strong>Soit H3 :</strong> L'agent DQN dépasse les feux fixes</li>
                         </ul>
                     </div>
                 </div>
                 <div class="highlight-box" style="margin-top: 20px;">
-                    <strong>Objectif :</strong> Créer un jumeau numérique ARZ adapté et un agent RL pour l'optimisation
+                    <strong>Objectif :</strong> Créer un jumeau numérique ARZ adapté et un agent DQN pour l'optimisation
                     des feux.
                 </div>
                 <aside class="notes">
@@ -171,9 +291,9 @@
                     Nous nous sommes posé trois questions simples :<br>
                     1. Peut-on modéliser mathématiquement ce trafic mixte ?<br>
                     2. Peut-on le simuler de manière réaliste sans avoir des capteurs partout ?<br>
-                    3. Une IA peut-elle faire mieux qu'un feu classique dans ce contexte ?<br><br>
-                    Nos hypothèses sont que le modèle ARZ est la bonne clé théorique, et que le Reinforcement Learning
-                    est la bonne méthode de contrôle.
+                    3. Une IA peut-elle faire mieux qu'un feu tricolore classique dans ce contexte ?<br><br>
+                    Pour y répondre, nous avons choisi le modèle ARZ pour la physique du trafic, et de
+                    l'apprentissage par renforcement pour le contrôle intelligent.
                 </aside>
             </section>
             <section>
@@ -196,10 +316,12 @@
                     </div>
                 </div>
                 <aside class="notes">
-                    Théoriquement, nous ne partons pas de rien.<br><br>
-                    Les modèles de trafic ont évolué depuis 1955. On est passé de modèles simples (comme de l'eau dans
-                    un tuyau) à des modèles plus complexes qui prennent en compte l'inertie des conducteurs
-                    (ARZ).<br><br>
+                    Notre approche repose sur des fondations solides, que nous avons adaptées à notre
+                    contexte.<br><br>
+                    Les modèles de trafic ont évolué depuis 1955. On est passé du modèle LWR
+                    — qui traite le trafic comme de l'eau dans un tuyau — au modèle ARZ,
+                    développé par <strong>Aw et Rascle en 2000</strong>, puis étendu par <strong>Zhang</strong>,
+                    qui prend en compte l'inertie des conducteurs.<br><br>
                     Récemment, des modèles multi-classes sont apparus.<br>
                     Notre travail a consisté à étendre ces modèles pour capturer spécifiquement les interactions
                     agressives de notre trafic ouest-africain.
@@ -246,7 +368,8 @@
                 <aside class="notes">
                     C'est ici que se situe notre apport scientifique.<br><br>
                     Les modèles classiques sont trop simples pour nous.<br>
-                    Les gros simulateurs commerciaux (comme SUMO) sont des boîtes noires difficiles à calibrer pour nos
+                    Les gros simulateurs commerciaux (comme SUMO ou CityFlow) sont des boîtes noires difficiles à
+                    calibrer pour nos
                     réalités.<br><br>
                     Nous proposons une approche intermédiaire : un modèle mathématique rigoureux, mais adapté localement
                     et conçu dès le départ pour être piloté par une IA.
@@ -254,6 +377,11 @@
             </section>
             <section>
                 <h2>Architecture Globale du Système</h2>
+                <!-- <div
+                    style="background: #e8f4f8; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.8em; text-align: left; border-left: 5px solid #003370;">
+                    <strong>Définition (NASA) :</strong> Réplique virtuelle fidèle et dynamique d'un système physique,
+                    permettant simulation et optimisation.
+                </div> -->
                 <div class="architecture-diagram">
                     <div class="arch-box blue"><strong>Modèle ARZ</strong>
                         <p>Multi-classes</p>
@@ -267,15 +395,19 @@
                         <p>Contrôle Adaptatif</p>
                     </div>
                 </div>
-                <div class="highlight-box" style="margin-top: 30px; text-align: center;"><strong>JUMEAU
-                        NUMÉRIQUE DE
-                        TRAFIC</strong></div>
+                <div class="highlight-box" style="margin-top: 20px; text-align: center;">
+                    <strong>NOTRE SOLUTION :</strong> Une plateforme logicielle de Jumeau Numérique
+                </div>
+
                 <aside class="notes">
-                    Voici l'architecture du système que nous avons développé. C'est un triptyque :<br><br>
-                    1. Le Modèle Physique (ARZ) : les équations qui décrivent le mouvement.<br>
-                    2. Le Solveur Numérique : le code qui calcule l'évolution du trafic pas à pas.<br>
-                    3. L'Agent IA : le cerveau qui contrôle les feux.<br><br>
-                    C'est l'ensemble de ces trois blocs qui constitue notre "Jumeau Numérique".
+                    Voici l'architecture du système que nous avons développé. C'est un triptyque.<br><br>
+                    D'abord, le <strong>Modèle Physique ARZ</strong> : ce sont les équations qui décrivent le mouvement
+                    du trafic.<br>
+                    Ensuite, le <strong>Solveur Numérique</strong> : c'est le code qui calcule l'évolution du trafic pas
+                    à pas.<br>
+                    Et enfin, l'<strong>Agent DQN</strong> : c'est le cerveau qui contrôle les feux.<br><br>
+                    C'est l'ensemble de ces trois blocs qui constitue notre "Jumeau Numérique".<br>
+                    <!-- Imaginez un lundi matin au carrefour IITA : pas de policier, le système gère tout seul. -->
                 </aside>
             </section>
             <section>
@@ -301,74 +433,65 @@
                     <strong>\(\tau\)</strong> : temps de relaxation
                 </p>
                 <aside class="notes">
-                    Rapidement sur la physique : nous utilisons le modèle ARZ multi-classes.<br><br>
-                    Il est constitué de deux équations pour chaque classe de véhicules (motos et voitures) :<br>
-                    1. La conservation de la masse : les véhicules ne disparaissent pas.<br>
-                    2. L'équation de la dynamique : elle décrit comment la propriété \(w\) (qui combine vitesse et
-                    anticipation) est transportée par le flot.<br><br>
-                    Le terme de droite est crucial : c'est la relaxation. Il dit que les conducteurs tendent à ajuster
-                    leur vitesse vers une vitesse d'équilibre \(V_e\) qui dépend de la densité du trafic (et donc des
-                    autres véhicules).
+                    Rapidement sur la physique : le modèle ARZ multi-classes est au cœur de notre approche.<br><br>
+                    Pour chaque type de véhicule — motos et voitures — on utilise deux équations fondamentales.<br>
+                    D'abord, la conservation de la masse : cela signifie que les véhicules ne disparaissent pas, ils
+                    avancent et se répartissent sur la route.<br>
+                    Ensuite, la dynamique de la vitesse : cette équation décrit comment les conducteurs ajustent leur
+                    vitesse en fonction du trafic autour d'eux.<br><br>
+                    Un point clé : le terme de relaxation. Il exprime le fait que chaque conducteur tend à adapter sa
+                    vitesse vers une valeur d'équilibre, qui dépend de la densité du trafic. Plus il y a de monde, plus
+                    on ralentit.<br>
+                    C'est cette interaction entre anticipation et adaptation qui permet de modéliser fidèlement le
+                    comportement réel sur nos routes.
                 </aside>
             </section>
             <section>
-                <h2>Schéma Numérique</h2>
-                <div class="two-columns">
-                    <div class="card">
-                        <h4>WENO5</h4>
-                        <p>Reconstruction d'ordre 5</p>
-                        <ul>
-                            <li>Capture des discontinuités</li>
-                            <li>Pas d'oscillations parasites</li>
-                        </ul>
+                <h2>Schéma Numérique (Volumes Finis)</h2>
+                <div class="two-columns" style="align-items: flex-start;">
+                    <div style="flex: 1;">
+                        <div class="card">
+                            <h4>Cadre FVM + WENO5</h4>
+                            <ul>
+                                <li><strong>FVM</strong> : Conservation stricte</li>
+                                <li><strong>WENO5</strong> : Précision 5e ordre</li>
+                            </ul>
+                        </div>
+                        <div class="card" style="margin-top: 15px;">
+                            <h4>SSP-RK3</h4>
+                            <ul>
+                                <li>Stabilité garantie</li>
+                                <li>Préservation de positivité</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h4>SSP-RK3</h4>
-                        <p>Intégration temporelle</p>
-                        <ul>
-                            <li>Stabilité garantie</li>
-                            <li>Préservation de positivité</li>
-                        </ul>
-                    </div>
-                </div>
-                <p style="margin-top: 20px; text-align: center;">&#8594; Simulation <strong>stable et réaliste</strong>
-                    des ondes de choc</p>
-                <aside class="notes">
-                    Pour résoudre ces équations, nous avons dû implémenter un schéma numérique avancé, le WENO5.<br><br>
-                    C'est technique, mais c'est nécessaire. Le trafic crée des ondes de choc (les freinages brusques).
-                    Des schémas plus simples auraient créé des erreurs de calcul ou des oscillations fausses.<br><br>
-                    WENO5 garantit que la simulation reste stable et précise, ce qui est indispensable pour que l'IA
-                    apprenne correctement.
-                </aside>
-            </section>
-            <section>
-                <h2>Cas d'Étude : Corridor Victoria Island</h2>
-                <div class="two-columns">
-                    <div>
-                        <h4>Caractéristiques</h4>
-                        <ul>
-                            <li><strong>70 segments</strong> de route</li>
-                            <li><strong>3 intersections</strong> majeures</li>
-                            <li>Mix motos/voitures typique</li>
-                            <li>Congestions récurrentes</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <img src="assets/thesis_network_final.png" alt="Corridor Victoria Island"
-                            style="max-height: 280px; border-radius: 8px;">
+                    <div style="flex: 1.5; text-align: center;">
+                        <img src="assets/weno5_fvm_animation.gif" alt="Animation WENO5 vs Upwind sur maillage FVM"
+                            style="max-height: 350px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                        <p style="font-size: 0.6em; color: #666; margin-top: 8px;">
+                            Advection d'un créneau : WENO5 (rouge) préserve les discontinuités
+                        </p>
                     </div>
                 </div>
                 <aside class="notes">
-                    Pour tester tout cela, nous avons modélisé un corridor réel de Victoria Island à Lagos.<br><br>
-                    C'est un cas d'école : 3 carrefours, beaucoup de trafic, et un mélange intense de motos et
-                    voitures.<br><br>
-                    Si notre système fonctionne ici, dans ces conditions difficiles, il pourra fonctionner ailleurs.
+                    Pour résoudre ces équations, nous utilisons la méthode des Volumes Finis (FVM).<br><br>
+                    C'est le cadre qui garantit que les véhicules ne disparaissent pas (conservation).<br>
+                    À l'intérieur de ce cadre, nous utilisons la reconstruction WENO5. C'est le "moteur" de précision
+                    qui permet de capturer les ondes de choc (freinages brusques) sans créer d'oscillations numériques
+                    fausses.<br><br>
+                    Comme vous le voyez sur l'animation : le schéma classique Upwind (en bleu) diffuse tout, le créneau
+                    devient une colline.
+                    WENO5 (en rouge) garde la netteté du signal.<br><br>
+                    Ce couple FVM + WENO5 est indispensable pour que la simulation soit stable et que l'IA apprenne sur
+                    une physique correcte.
                 </aside>
             </section>
+
             <section>
                 <h2>Environnement RL - API Gymnasium</h2>
                 <div class="rl-diagram">
-                    <div class="rl-box agent">Agent DQN</div>
+                    <div class="rl-box agent">Agent DQN<br><span style="font-size:0.6em; font-weight:normal;">(DeepMind,
+                            2015)</span></div>
                     <div class="rl-arrows"><span>Action a<sub>t</sub> &#8594;</span><span>&#8592; État s<sub>t+1</sub>,
                             Récompense r<sub>t</sub></span></div>
                     <div class="rl-box env">Environnement (Jumeau Numérique)</div>
@@ -385,8 +508,9 @@
                     </div>
                 </div>
                 <aside class="notes">
-                    Pour l'IA, nous avons utilisé l'apprentissage par renforcement.<br><br>
-                    L'agent est comme un policier au carrefour. Il regarde l'état du trafic (densités, vitesses).<br>
+                    Pour l'IA, nous avons utilisé l'agent DQN (Deep Q-Network).<br><br>
+                    L'agent DQN est comme un policier au carrefour. Il regarde l'état du trafic (densités,
+                    vitesses).<br>
                     Il prend une action : laisser vert ou passer au rouge.<br>
                     Et il reçoit une récompense : plus le trafic coule, plus il gagne de points. Il apprend ainsi par
                     essai-erreur à maximiser la fluidité globale.
@@ -408,7 +532,7 @@
                         <ul>
                             <li>Moteur physique validé (ARZ)</li>
                             <li>Intelligence opérationnelle (RL)</li>
-                            <li><strong>Produit embryonnaire</strong></li>
+                            <li><strong>Plateforme logicielle</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -434,8 +558,9 @@
 
                 <aside class="notes">
                     Voici une démonstration en temps réel de notre jumeau numérique.<br><br>
-                    Ce que vous voyez ici, c'est le modèle ARZ multi-classes en action sur le corridor de Victoria
-                    Island :<br>
+                    Il s'agit de la modélisation du corridor de Victoria Island à Lagos, avec ses 3 intersections
+                    majeures.<br><br>
+                    Ce que vous voyez ici, c'est le modèle ARZ multi-classes en action :<br>
                     - Les <strong>traînées orange</strong> représentent les motos (70% du flux).<br>
                     - Les <strong>traînées bleues</strong> représentent les voitures.<br>
                     - Les <strong>colonnes 3D</strong> aux intersections sont les feux de signalisation qui changent de
@@ -475,23 +600,25 @@
             </section>
             <section>
                 <h2>Validation H2 : Dynamique du Réseau</h2>
-                <div class="two-columns">
-                    <div>
+                <div style="margin-bottom: 10px; font-size: 0.8em; color: #666;">Corridor : Victoria Island (Lagos,
+                    Nigéria)</div>
+                <div class="two-columns" style="align-items: center;">
+                    <div style="flex: 1.6;">
                         <img src="assets/network_snapshots.png" alt="Instantanés du réseau"
-                            style="max-height: 280px; border-radius: 8px;">
+                            style="max-height: 450px; width: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
                     </div>
-                    <div>
+                    <div style="flex: 1; font-size: 0.85em; padding-left: 20px;">
                         <h4>Observations</h4>
-                        <ul>
+                        <ul style="margin-bottom: 20px;">
                             <li>Propagation des ondes de choc</li>
                             <li>Hétérogénéité spatiale capturée</li>
                             <li>Stabilité globale du système</li>
                         </ul>
-                        <h4 style="margin-top: 15px;">3 régimes reproduits</h4>
-                        <ul>
-                            <li style="color: #27ae60;">Fluide (vert vif)</li>
-                            <li style="color: #f39c12;">Congestion (orange)</li>
-                            <li style="color: #e74c3c;">Bouchon (rouge)</li>
+                        <h4>3 régimes reproduits</h4>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="color: #27ae60; font-weight: bold;">&#9679; Fluide (vert vif)</li>
+                            <li style="color: #f39c12; font-weight: bold;">&#9679; Congestion (orange)</li>
+                            <li style="color: #e74c3c; font-weight: bold;">&#9679; Bouchon (rouge)</li>
                         </ul>
                     </div>
                 </div>
@@ -526,7 +653,7 @@
                 </div>
                 <aside class="notes">
                     <strong>Monsieur le Président, honorables membres du Jury</strong>, maintenant que nous avons validé
-                    l'outil de simulation, voyons ce que l'IA a réussi à faire.<br><br>
+                    l'outil de simulation, voyons ce que l'agent DQN a réussi à faire.<br><br>
                     Voici la courbe d'apprentissage de l'agent.<br>
                     Au début, il tâtonne. Mais après environ 50 000 itérations, il converge vers une stratégie stable.
                     Il a appris à gérer le carrefour.
@@ -558,14 +685,20 @@
                         </tr>
                     </tbody>
                 </table>
-                <p style="margin-top: 20px; text-align: center;">L'IA excelle là où le système classique s'effondre :
+                <div
+                    style="margin-top: 20px; background: #e8f8f5; padding: 10px; border-radius: 8px; color: #27ae60; text-align: center;">
+                    <strong>Impact Concret :</strong> ~20h de temps gagné / an / usager
+                </div>
+                <p style="margin-top: 10px; text-align: center; font-size: 0.8em;">L'Agent DQN excelle là où le système
+                    classique s'effondre :
                     <strong>en situation de crise</strong>
                 </p>
                 <aside class="notes">
                     Concrètement, qu'est-ce que ça donne ?<br><br>
-                    Nous avons comparé l'IA à un feu à temps fixe bien réglé (méthode Webster).<br>
-                    En moyenne, l'IA améliore le flux de 4.2%.<br>
-                    Mais surtout, en situation de saturation (quand c'est la crise), le gain monte à près de 6%.
+                    Nous avons comparé l'agent DQN à un feu à temps fixe bien réglé (méthode Webster).<br>
+                    En moyenne, l'agent DQN améliore le flux de 4.2%.<br>
+                    Mais surtout, en situation de saturation (quand c'est la crise), le gain monte à près de 6%.<br>
+                    Cela représente environ 20 heures de vie gagnées par an pour un usager quotidien.
                 </aside>
             </section>
             <section>
@@ -606,7 +739,7 @@
                     </div>
                     <div class="card partial">
                         <h4>H3</h4>
-                        <p>Supériorité IA</p>
+                        <p>Supériorité Agent DQN</p>
                         <p class="status partial">&#9681; PARTIELLE</p>
                     </div>
                 </div>
@@ -616,7 +749,7 @@
                     En synthèse :<br><br>
                     Nous avons validé le modèle mathématique (H1).<br>
                     Nous avons validé le réalisme du trafic simulé (H2).<br>
-                    Et nous avons montré que l'IA apporte un gain opérationnel, même s'il reste perfectible (H3).
+                    Et nous avons montré que l'agent DQN apporte un gain opérationnel, même s'il reste perfectible (H3).
                 </aside>
             </section>
             <section>
@@ -688,7 +821,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+    <script src="plugin/notes/notes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/math/math.js"></script>
     <script>
         Reveal.initialize({

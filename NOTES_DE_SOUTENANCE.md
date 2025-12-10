@@ -2,16 +2,11 @@
 
 ## Slide 1 : Jumeau Numérique pour le Trafic Ouest-Africain
 
-Monsieur le Président du Jury, Honorables membres, Chers Maîtres.
+Excellence Monsieur le Président du Jury, Honorables membres du Jury, chers parents, amis et invités Bonjour
 
-                    Nous avons l'honneur de vous présenter aujourd'hui les résultats de notre travail de fin
-                    d'études.
+                    Nous avons l'honneur de vous présenter aujourd'hui les résultats de notre travail de fin d'études.
 
-                    Il porte sur la conception d'un "Jumeau Numérique pour le Trafic Ouest-Africain", et son utilisation
-                    pour optimiser les feux de signalisation grâce à l'Intelligence Artificielle.
-
-                    Ce travail a été mené sous la direction du Dr. Abel KONNON et l'encadrement technique du Dr. Régis
-                    Donald HONTINFINDE.
+                    Il porte sur la conception d'un "Jumeau Numérique pour le Trafic Ouest-Africain", et son utilisation pour optimiser les feux de signalisation grâce à l'Intelligence Artificielle.
 
 <div style="page-break-after: always;"></div>
 
@@ -19,9 +14,9 @@ Monsieur le Président du Jury, Honorables membres, Chers Maîtres.
 
 ## Slide 2 : Plan de la Présentation
 
-Pour cette présentation, nous suivrons une démarche classique en cinq points.
+Pour cette présentation, nous suivrons une démarche classique.
 
-                    D'abord le contexte, pour comprendre pourquoi les solutions actuelles ne suffisent pas.
+                    Nous commencerons par le contexte et une revue de la littérature, pour comprendre pourquoi les solutions actuelles ne suffisent pas.
 
                     Ensuite, la méthodologie : comment nous avons construit ce simulateur.
 
@@ -35,14 +30,13 @@ Pour cette présentation, nous suivrons une démarche classique en cinq points.
 
 ## Slide 3 : Le Défi du Trafic Ouest-Africain
 
-Le point de départ, c'est un constat que nous vivons tous au quotidien. Le trafic à Cotonou ou Lagos
-                    n'a rien à voir avec celui de Paris ou de New York.
+Le point de départ, c'est un constat que nous vivons tous au quotidien.
 
-                    La différence majeure, c'est l'hétérogénéité. Les motos (les "zems") représentent plus de 70% du
-                    flux. Elles se faufilent, changent de voie, créent une dynamique très fluide mais chaotique.
+                    À Lagos, ville la plus congestionnée au monde selon l'indice Numbeo 2024, les embouteillages coûtent environ 6 milliards de dollars par an.
 
-                    Nos infrastructures peinent à suivre, et cela crée la congestion chronique que nous connaissons,
-                    avec son lot de pollution et de pertes économiques pour le pays.
+                    Chez nous à Cotonou, sur l'axe Carrefour Étoile Rouge - Saint-Michel, un trajet de 20 minutes peut en prendre 90 aux heures de pointe.
+
+                    Cette mixité crée une dynamique fluide mais difficile à gérer, avec des pertes économiques considérables.
 
 <div style="page-break-after: always;"></div>
 
@@ -50,14 +44,13 @@ Le point de départ, c'est un constat que nous vivons tous au quotidien. Le traf
 
 ## Slide 4 : Pourquoi les Solutions Classiques Échouent
 
-Le problème, c'est que nos outils de gestion actuels ne sont pas adaptés à cette réalité.
+Le problème, c'est que nos infrastructures de gestion actuelles ne sont pas adaptées à cette réalité.
 
                     Les feux sont à temps fixe : ils sont "aveugles", ils ne voient pas le trafic.
 
-                    Et les logiciels de simulation qu'on importe sont calibrés pour des voitures, en Occident. Ils ne
-                    savent pas simuler correctement le comportement d'une nuée de motos.
+                    Et les simulateurs qui existent sont calibrés pour un trafic homogène de voitures. Ils ne savent pas représenter correctement le comportement d'un flux mixte motos-voitures.
 
-                    Il y a donc un manque criant d'outils technologiques adaptés à *notre* contexte.
+                    Il y a donc une absence d'outils technologiques adaptés à *notre* contexte.
 
 <div style="page-break-after: always;"></div>
 
@@ -73,10 +66,9 @@ L'objectif de ce mémoire était donc de combler ce vide.
 
                     2. Peut-on le simuler de manière réaliste sans avoir des capteurs partout ?
 
-                    3. Une IA peut-elle faire mieux qu'un feu classique dans ce contexte ?
+                    3. Une IA peut-elle faire mieux qu'un feu tricolore classique dans ce contexte ?
 
-                    Nos hypothèses sont que le modèle ARZ est la bonne clé théorique, et que le Reinforcement Learning
-                    est la bonne méthode de contrôle.
+                    Pour y répondre, nous avons fait le pari du modèle ARZ pour la physique du trafic, et de l'apprentissage par renforcement pour le contrôle intelligent.
 
 <div style="page-break-after: always;"></div>
 
@@ -150,34 +142,22 @@ Rapidement sur la physique : nous utilisons le modèle ARZ multi-classes.
 
 ---
 
-## Slide 10 : Schéma Numérique
+## Slide 10 : Schéma Numérique (Volumes Finis)
 
-Pour résoudre ces équations, nous avons dû implémenter un schéma numérique avancé, le WENO5.
+Pour résoudre ces équations, nous utilisons la méthode des Volumes Finis (FVM).
 
-                    C'est technique, mais c'est nécessaire. Le trafic crée des ondes de choc (les freinages brusques).
-                    Des schémas plus simples auraient créé des erreurs de calcul ou des oscillations fausses.
+                    C'est le cadre qui garantit que les véhicules ne disparaissent pas (conservation).
 
-                    WENO5 garantit que la simulation reste stable et précise, ce qui est indispensable pour que l'IA
-                    apprenne correctement.
+                    À l'intérieur de ce cadre, nous utilisons la reconstruction WENO5. C'est le "moteur" de précision qui permet de capturer les ondes de choc (freinages brusques) sans créer d'oscillations numériques fausses.
 
-<div style="page-break-after: always;"></div>
-
----
-
-## Slide 11 : Cas d'Étude : Corridor Victoria Island
-
-Pour tester tout cela, nous avons modélisé un corridor réel de Victoria Island à Lagos.
-
-                    C'est un cas d'école : 3 carrefours, beaucoup de trafic, et un mélange intense de motos et
-                    voitures.
-
-                    Si notre système fonctionne ici, dans ces conditions difficiles, il pourra fonctionner ailleurs.
+                    Ce couple FVM + WENO5 est indispensable pour que la simulation soit stable et que l'IA apprenne sur une physique correcte.
 
 <div style="page-break-after: always;"></div>
 
 ---
 
-## Slide 12 : Environnement RL - API Gymnasium
+
+## Slide 11 : Environnement RL - API Gymnasium
 
 Pour l'IA, nous avons utilisé l'apprentissage par renforcement.
 
@@ -192,7 +172,7 @@ Pour l'IA, nous avons utilisé l'apprentissage par renforcement.
 
 ---
 
-## Slide 13 : Clarification : Vers un Jumeau Numérique
+## Slide 12 : Clarification : Vers un Jumeau Numérique
 
 Alors, une précision importante sur le terme "Jumeau Numérique".
 
@@ -211,12 +191,13 @@ Alors, une précision importante sur le terme "Jumeau Numérique".
 
 ---
 
-## Slide 14 : Sans Titre
+## Slide 13 : Démonstration Jumeau Numérique
 
 Voici une démonstration en temps réel de notre jumeau numérique.
 
-                    Ce que vous voyez ici, c'est le modèle ARZ multi-classes en action sur le corridor de Victoria
-                    Island :
+                    Il s'agit de la modélisation du corridor de Victoria Island à Lagos, avec ses 3 intersections majeures.
+
+                    Ce que vous voyez ici, c'est le modèle ARZ multi-classes en action :
 
                     - Les **traînées orange** représentent les motos (70% du flux).
 
@@ -235,7 +216,7 @@ Voici une démonstration en temps réel de notre jumeau numérique.
 
 ---
 
-## Slide 15 : Validation H1 : Tests de Riemann
+## Slide 14 : Validation H1 : Tests de Riemann
 
 Passons aux résultats. D'abord, la validation mathématique.
 
@@ -248,7 +229,7 @@ Passons aux résultats. D'abord, la validation mathématique.
 
 ---
 
-## Slide 16 : Validation H2 : Dynamique du Réseau
+## Slide 15 : Validation H2 : Dynamique du Réseau
 
 Ensuite, la validation systémique du jumeau numérique.
 
@@ -263,7 +244,7 @@ Ensuite, la validation systémique du jumeau numérique.
 
 ---
 
-## Slide 17 : Courbe d'Apprentissage de l'Agent RL
+## Slide 16 : Courbe d'Apprentissage de l'Agent RL
 
 **Monsieur le Président, honorables membres du Jury**, maintenant que nous avons validé
                     l'outil de simulation, voyons ce que l'IA a réussi à faire.
@@ -277,7 +258,7 @@ Ensuite, la validation systémique du jumeau numérique.
 
 ---
 
-## Slide 18 : Résultats Comparatifs
+## Slide 17 : Résultats Comparatifs
 
 Concrètement, qu'est-ce que ça donne ?
 
@@ -291,7 +272,7 @@ Concrètement, qu'est-ce que ça donne ?
 
 ---
 
-## Slide 19 : Analyse du Gain
+## Slide 18 : Analyse du Gain
 
 Ce gain de 4.2% mérite une analyse. Il peut paraître modeste, mais il est en réalité très
                     significatif.
@@ -309,7 +290,7 @@ Ce gain de 4.2% mérite une analyse. Il peut paraître modeste, mais il est en r
 
 ---
 
-## Slide 20 : Synthèse des Résultats
+## Slide 19 : Synthèse des Résultats
 
 En synthèse :
 
@@ -323,7 +304,7 @@ En synthèse :
 
 ---
 
-## Slide 21 : Contributions
+## Slide 20 : Contributions
 
 Ce travail apporte trois contributions :
 
@@ -337,7 +318,7 @@ Ce travail apporte trois contributions :
 
 ---
 
-## Slide 22 : Limites et Perspectives
+## Slide 21 : Limites et Perspectives
 
 Bien sûr, tout n'est pas parfait.
 
@@ -351,7 +332,7 @@ Bien sûr, tout n'est pas parfait.
 
 ---
 
-## Slide 23 : Merci
+## Slide 22 : Merci
 
 Pour conclure, ce mémoire est une première pierre.
 
@@ -364,6 +345,22 @@ Pour conclure, ce mémoire est une première pierre.
 
                     Nous vous remercions de votre attention et sommes maintenant à votre disposition pour répondre à vos
                     questions.
+
+<div style="page-break-after: always;"></div>
+
+---
+
+## Slide Bonus : FVM vs WENO (Explication Technique)
+
+Si on vous demande la différence ou le lien entre FVM et WENO :
+
+                    C'est une excellente question de précision.
+
+                    Le **FVM (Finite Volume Method)** est le **cadre** de notre schéma. C'est lui qui découpe la route en cellules et garantit la conservation des véhicules (ce qui rentre moins ce qui sort).
+
+                    Le **WENO (Weighted Essential Non-Oscillatory)** est la **méthode de reconstruction** utilisée *au sein* du FVM. C'est le "moteur" qui calcule les flux aux frontières des cellules.
+
+                    Pourquoi insister sur WENO ? Parce que c'est lui qui fait la différence. Un FVM classique serait soit trop flou (ordre 1), soit instable (oscillations). WENO nous donne le meilleur des deux mondes : la haute précision (ordre 5) et la stabilité face aux chocs.
 
 <div style="page-break-after: always;"></div>
 
