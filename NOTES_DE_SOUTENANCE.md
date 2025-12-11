@@ -38,6 +38,8 @@ Le point de départ, c'est un constat que nous vivons tous au quotidien.
 
                     Cette mixité crée une dynamique fluide mais difficile à gérer, avec des pertes économiques considérables.
 
+                    Et aux carrefours de Cotonou, la pollution atmosphérique atteint 181 µg/m³ de PM2.5, soit 36 fois la norme recommandée par l'OMS.
+
 <div style="page-break-after: always;"></div>
 
 ---
