@@ -236,7 +236,7 @@
                     pickable: false
                 }),
 
-                // Motos - orange trails (ENHANCED: thicker trails per deck.gl best practices)
+                // Motos - orange trails (70% du flux - DOMINANT visuellement)
                 new TripsLayer({
                     id: 'trips-motos',
                     data: tripsMotoData,
@@ -244,23 +244,23 @@
                     getTimestamps: d => d.timestamps,
                     getColor: [241, 148, 54],
                     opacity: 1.0,
-                    widthMinPixels: 8,
-                    trailLength: 80,
+                    widthMinPixels: 10,
+                    trailLength: 100,
                     currentTime: currentTime,
                     shadowEnabled: false,
                     fadeTrail: true
                 }),
 
-                // Cars - blue trails (ENHANCED: thicker trails per deck.gl best practices)
+                // Cars - blue trails (30% du flux - secondaires)
                 new TripsLayer({
                     id: 'trips-cars',
                     data: tripsCarsData,
                     getPath: d => d.path,
                     getTimestamps: d => d.timestamps,
                     getColor: [52, 152, 219],
-                    opacity: 1.0,
-                    widthMinPixels: 10,
-                    trailLength: 100,
+                    opacity: 0.85,
+                    widthMinPixels: 8,
+                    trailLength: 70,
                     currentTime: currentTime,
                     shadowEnabled: false,
                     fadeTrail: true
