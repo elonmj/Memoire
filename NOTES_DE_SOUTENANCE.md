@@ -1,4 +1,3 @@
-# Notes de Soutenance - Jumeau Numérique
 
 ## Slide 1 : Jumeau Numérique pour le Trafic Ouest-Africain
 
@@ -8,7 +7,7 @@ Excellence Monsieur le Président du Jury, honorables membres du Jury, chers par
 
 Je suis Elonm AHOUANYE, et j'ai le plaisir de vous présenter aujourd'hui notre travail de fin de formation d'Ingénieur de Conception en Informatique, Logistique et Recherche Opérationnelle.
 
-Ce travail porte sur la conception d'un "Jumeau Numérique pour le Trafic Ouest-Africain", et son utilisation pour optimiser les feux de signalisation grâce à l'Intelligence Artificielle.
+Ce travail porte sur la conception d'un "Jumeau Numérique pou![1765488229603](image/NOTES_DE_SOUTENANCE/1765488229603.png)![1765488240024](image/NOTES_DE_SOUTENANCE/1765488240024.png)![1765488245901](image/NOTES_DE_SOUTENANCE/1765488245901.png)![1765488252123](image/NOTES_DE_SOUTENANCE/1765488252123.png)![1765488358942](image/NOTES_DE_SOUTENANCE/1765488358942.png)![1765488363757](image/NOTES_DE_SOUTENANCE/1765488363757.png)![1765488367901](image/NOTES_DE_SOUTENANCE/1765488367901.png)![1765488378928](image/NOTES_DE_SOUTENANCE/1765488378928.png)![1765488385366](image/NOTES_DE_SOUTENANCE/1765488385366.png)![1765488406255](image/NOTES_DE_SOUTENANCE/1765488406255.png)![1765488412914](image/NOTES_DE_SOUTENANCE/1765488412914.png)r le Trafic Ouest-Africain", et son utilisation pour optimiser les feux de signalisation grâce à l'Intelligence Artificielle.
 
 Il a été réalisé sous la supervision du Dr. Abel KONNON et l'encadrement du Dr. Ing. Regis Donald HONTINFINDE, que je tiens à remercier pour leur suivi rigoureux tout au long de ce projet.
 

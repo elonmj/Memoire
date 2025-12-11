@@ -422,12 +422,10 @@
                         <p style="font-size: 0.9em; margin-top: 10px;">avec \( w_i = v_i + p_i(\rho_m, \rho_c) \)</p>
                     </div>
                 </div>
-                <p style="margin-top: 20px; text-align: center; font-size: 0.8em;">
-                    Où <strong>\(\rho\)</strong> : densité,
-                    <strong>\(v\)</strong> : vitesse,
-                    <strong>\(w\)</strong> : propriété transportée (vitesse + pression),<br>
-                    <strong>\(V_e\)</strong> : vitesse d'équilibre,
-                    <strong>\(\tau\)</strong> : temps de relaxation
+                <p style="margin-top: 15px; text-align: center; font-size: 0.75em; line-height: 1.3;">
+                    Où <strong>ρ</strong> : densité, <strong>v</strong> : vitesse, <strong>w</strong> : propriété
+                    transportée,<br>
+                    <strong>V_e</strong> : vitesse d'équilibre, <strong>τ</strong> : temps de relaxation
                 </p>
                 <aside class="notes">
                     Commençons par le cœur du système : le modèle physique.<br><br>
@@ -758,19 +756,20 @@
 
             <section>
                 <h2>Courbe d'Apprentissage de l'Agent RL</h2>
-                <div class="two-columns">
-                    <div>
+                <div class="two-columns" style="align-items: center; gap: 40px;">
+                    <div style="flex: 2;">
                         <img src="assets/fig_8_training_curve.png" alt="Courbe d'apprentissage"
-                            style="max-height: 280px; border-radius: 8px;">
+                            style="width: 100%; max-height: 420px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
                     </div>
-                    <div>
-                        <h4>Observations</h4>
-                        <ul>
+                    <div style="flex: 1; font-size: 0.85em;">
+                        <h4 style="font-size: 1.1em; margin-bottom: 15px;">OBSERVATIONS</h4>
+                        <ul style="margin-bottom: 20px;">
                             <li>Convergence stable après ~55k pas</li>
                             <li>Performance au-dessus du baseline</li>
                             <li>Pas de sur-apprentissage</li>
                         </ul>
-                        <div class="highlight-box" style="margin-top: 20px;"><strong>Configuration DQN</strong><br>LR:
+                        <div class="highlight-box" style="padding: 12px; font-size: 0.9em;"><strong>Configuration
+                                DQN</strong><br>LR:
                             10<sup>-4</sup> | Buffer: 50k | epsilon: 30%</div>
                     </div>
                 </div>
