@@ -59,17 +59,18 @@
                 <aside class="notes">
                     Merci Monsieur le Président du Jury de m'avoir donné la parole.<br>
                     Excellence Monsieur le Président du Jury, honorables membres du Jury, chers parents, amis et
-                    invités, bonjour et merci de votre présence.<br><br>
+                    invités, bonjour.<br><br>
 
-                    Je suis Elonm Josaphat AHOUANYE, et j'ai l'honneur de vous présenter aujourd'hui le travail de fin
-                    de ma formation d'Ingénieur de Conception en Informatique, Logistique et Recherche
+                    Je suis Elonm AHOUANYE, et j'ai le plaisir de vous présenter aujourd'hui notre travail de fin
+                    de formation d'Ingénieur de Conception en Informatique, Logistique et Recherche
                     Opérationnelle.<br><br>
 
-                    Il porte sur la conception d'un "Jumeau Numérique pour le Trafic Ouest-Africain", et son utilisation
+                    Ce travail porte sur la conception d'un "Jumeau Numérique pour le Trafic Ouest-Africain", et son
+                    utilisation
                     pour optimiser les feux de signalisation grâce à l'Intelligence Artificielle.<br><br>
                     Il a été réalisé
                     sous la supervision du Dr. Abel KONNON et l'encadrement du Dr. Ing. Regis Donald
-                    HONTINFINDE.<br><br> que je tiens à remercier tout particulièrement pour son suivi rigoureux tout au
+                    HONTINFINDE, que je tiens à remercier pour leur suivi rigoureux tout au
                     long de ce projet.
 
                 </aside>
@@ -87,7 +88,7 @@
                     Pour cette présentation, nous suivrons une démarche classique.<br><br>
                     Nous commencerons par le contexte et une revue de la littérature, pour comprendre pourquoi les
                     solutions actuelles ne suffisent pas.<br>
-                    Ensuite, la méthodologie : comment nous avons construit ce simulateur.<br>
+                    Ensuite, la méthodologie indiquant comment nous avons construit ce simulateur.<br>
                     Puis les résultats, pour voir si l'IA apporte vraiment un gain.<br>
                     Et enfin, les perspectives que ce travail ouvre pour nos villes.
                 </aside>
@@ -160,7 +161,6 @@
                 </p>
 
                 <aside class="notes">
-                    Monsieur le Président du Jury, honorables membres du jury <br><br>
                     Qui, dans cette salle, n'a jamais ressenti la frustration de perdre un temps précieux dans les
                     embouteillages ?
                     Sachez que vous n'êtes pas seuls.<br><br>
@@ -171,7 +171,7 @@
                     <strong>2 heures 21 minutes PAR JOUR</strong> dans les bouchons.
                     Pas par semaine. PAR JOUR.<br><br>
 
-                    Faites le calcul : ça représente plus de <strong>850 heures par an</strong>.
+                    ça représente plus de <strong>850 heures par an</strong>.
                     C'est l'équivalent de 35 jours complets passés... à ne rien faire d'autre qu'attendre.<br><br>
 
                     Et le coût ? <strong>4,8 milliards de dollars</strong> perdus chaque année,
@@ -291,7 +291,8 @@
                     Nous nous sommes posé trois questions simples :<br>
                     1. Peut-on modéliser mathématiquement ce trafic mixte ?<br>
                     2. Peut-on le simuler de manière réaliste sans avoir des capteurs partout ?<br>
-                    3. Une IA peut-elle faire mieux qu'un feu tricolore classique dans ce contexte ?<br><br>
+                    3. Une agent intelligent peut-elle faire mieux qu'un feu tricolore classique dans ce contexte
+                    ?<br><br>
                     Pour y répondre, nous avons choisi le modèle ARZ pour la physique du trafic, et de
                     l'apprentissage par renforcement pour le contrôle intelligent.
                 </aside>
@@ -388,7 +389,7 @@
                     </div>
                     <div class="arch-arrow">&#8594;</div>
                     <div class="arch-box gold"><strong>Solveur</strong>
-                        <p>Schéma WENO5</p>
+                        <p>Volumes Finis</p>
                     </div>
                     <div class="arch-arrow">&#8594;</div>
                     <div class="arch-box green"><strong>Agent DQN</strong>
@@ -400,7 +401,9 @@
                 </div>
 
                 <aside class="notes">
-                    Voici l'architecture du système que nous avons développé. C'est un triptyque.<br><br>
+                    Excellence Monsieur le Président du Jury, honorables membres du Jury,<br>
+                    permettez-moi maintenant de vous présenter notre méthodologie.<br><br>
+                    Voici l'architecture du système que nous avons développé.<br><br>
                     D'abord, le <strong>Modèle Physique ARZ</strong> : ce sont les équations qui décrivent le mouvement
                     du trafic.<br>
                     Ensuite, le <strong>Solveur Numérique</strong> : c'est le code qui calcule l'évolution du trafic pas
@@ -433,24 +436,21 @@
                     <strong>\(\tau\)</strong> : temps de relaxation
                 </p>
                 <aside class="notes">
-                    Rapidement sur la physique. Nous utilisons le modèle ARZ multi-classes, qui se compose de deux
+                    Nous utilisons le modèle ARZ multi-classes, qui se compose de deux
                     équations fondamentales pour chaque classe de véhicules — motos et voitures.<br><br>
                     La première équation, c'est la <strong>conservation de la masse</strong>. Elle traduit simplement
-                    que les véhicules
-                    ne disparaissent pas. Ils s'écoulent d'un endroit à un autre.<br>
-                    Le terme \(\rho \cdot v\) que vous voyez, c'est le <strong>flux de véhicules</strong> — le nombre de
+                    que les véhicules ne disparaissent pas. Ils s'écoulent d'un endroit à un autre.<br>
+                    Le terme « rho fois v » que vous voyez, c'est le <strong>flux de véhicules</strong> — le nombre de
                     véhicules qui passent par seconde.<br>
                     Il y a une relation fondamentale : quand la densité augmente (plus de véhicules), la vitesse diminue
-                    (on ralentit).
-                    C'est cette relation inverse qui garantit la conservation : le produit \(\rho \cdot v\) reste
-                    cohérent.<br><br>
+                    (on ralentit). C'est cette relation inverse qui garantit la conservation.<br><br>
                     La deuxième équation décrit la <strong>dynamique de la vitesse</strong>. Elle explique comment la
-                    propriété \(w\) —
-                    qui combine à la fois la vitesse et une sorte d'anticipation du conducteur — est transportée par le
+                    propriété w — qui combine à la fois la vitesse et une sorte d'anticipation du conducteur — est
+                    transportée par le
                     flux de trafic.<br><br>
                     Le terme de droite, c'est ce qu'on appelle la <strong>relaxation</strong>. Il dit que les
-                    conducteurs ne gardent pas
-                    une vitesse fixe. Non. Ils ajustent constamment leur vitesse vers une vitesse d'équilibre \(V_e\),
+                    conducteurs ne gardent pas une vitesse fixe. Non. Ils ajustent constamment leur vitesse vers une
+                    vitesse d'équilibre,
                     qui dépend directement de la densité autour d'eux.<br>
                     C'est ce comportement réaliste qui rend le modèle si puissant.<br><br>
                     Maintenant, comment résoudre ces équations numériquement ? C'est ce que nous allons voir.
@@ -542,19 +542,19 @@
                         Finis</strong>.<br><br>
 
                     On découpe la route en petites cellules. Dans chaque cellule, on stocke un <strong>vecteur
-                        d'état</strong> \( \mathbf{U}_i \).<br>
-                    Ce vecteur contient deux choses : la <strong>densité</strong> \(\rho\) (combien de véhicules par
-                    mètre) et la <strong>quantité de mouvement</strong> \(y = \rho \cdot v\).<br><br>
+                        d'état</strong> U.<br>
+                    Ce vecteur contient deux choses : la <strong>densité</strong> rho (combien de véhicules par
+                    mètre) et la <strong>quantité de mouvement</strong> y = rho fois v.<br><br>
 
                     L'équation dit simplement ceci : la variation de ce vecteur d'état dans une cellule ne dépend que de
                     ce qui entre et sort par ses frontières.<br>
-                    C'est ce qu'on appelle le <strong>flux numérique</strong> \(\mathbf{F}\) — attention, ce n'est pas
+                    C'est ce qu'on appelle le <strong>flux numérique</strong> F — attention, ce n'est pas
                     directement le "débit de voitures", mais le taux de transfert mathématique de nos deux grandeurs
                     conservées.<br><br>
 
                     Tout le défi est là : on connaît les moyennes dans chaque cellule, mais pas la valeur exacte à la
                     frontière.<br>
-                    Il faut donc <strong>reconstruire</strong> ce flux \(\mathbf{F}_{i+1/2}\) à l'interface. Si on fait
+                    Il faut donc <strong>reconstruire</strong> ce flux F à l'interface. Si on fait
                     ça grossièrement, les ondes de choc deviennent floues.<br>
                     C'est pourquoi nous avons besoin d'une méthode de haute précision : le schéma WENO5.
                 </aside>
@@ -590,7 +590,7 @@
                     </div>
                 </div>
                 <aside class="notes">
-                    Nous avons vu que le défi est de reconstruire le flux \(\mathbf{F}_{i+1/2}\) à l'interface.<br><br>
+                    Nous avons vu que le défi est de reconstruire le flux F à l'interface.<br><br>
 
                     Si on utilise une méthode simple — comme le schéma "Upwind" du premier ordre (courbe bleue) — on
                     <strong>diffuse</strong> l'information.<br>
@@ -600,12 +600,75 @@
                     C'est pourquoi nous utilisons la reconstruction <strong>WENO5</strong> — ordre 5.<br>
                     La formule à gauche montre le principe : on calcule une moyenne pondérée de trois reconstructions
                     candidates.<br>
-                    Les coefficients \(\omega_k\) s'adaptent <strong>automatiquement</strong> : si une discontinuité (un
+                    Les coefficients oméga s'adaptent <strong>automatiquement</strong> : si une discontinuité (un
                     choc) est détectée, le poids de la reconstruction problématique s'annule.<br><br>
 
                     Résultat : la courbe rouge reste <strong>nette</strong>. Les ondes de choc sont préservées.<br>
                     C'est cette précision qui permet à notre IA de "voir" correctement les bouchons et d'agir au bon
                     moment.
+                </aside>
+            </section>
+
+            <!-- SLIDE TRANSITION : Du simulateur à l'environnement RL -->
+            <section>
+                <h2>Du Simulateur à l'Environnement d'Apprentissage</h2>
+                <div style="display: flex; align-items: center; gap: 40px; margin-top: 30px;">
+                    <!-- Bloc gauche : Simulateur -->
+                    <div style="flex: 1; text-align: center;">
+                        <div
+                            style="background: linear-gradient(135deg, #003370 0%, #0a4d8c 100%); color: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                            <h4 style="margin: 0 0 15px 0; color: #D4AF37;">✓ Simulateur ARZ</h4>
+                            <ul style="text-align: left; margin: 0; padding-left: 20px; font-size: 0.85em;">
+                                <li>Modèle physique validé</li>
+                                <li>Solveur WENO5 précis</li>
+                                <li>Dynamique réaliste</li>
+                            </ul>
+                            <p style="margin-top: 15px; font-size: 0.8em; color: #bdc3c7;">Simule le trafic...
+                                <br><strong style="color: #e74c3c;">mais reste passif</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Flèche de transformation -->
+                    <div style="font-size: 3em; color: #D4AF37;">⟹</div>
+                    <!-- Bloc droite : Environnement RL -->
+                    <div style="flex: 1; text-align: center;">
+                        <div
+                            style="background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                            <h4 style="margin: 0 0 15px 0; color: #fff;">+ Environnement RL</h4>
+                            <ul style="text-align: left; margin: 0; padding-left: 20px; font-size: 0.85em;">
+                                <li><strong>État</strong> : densités, vitesses</li>
+                                <li><strong>Action</strong> : contrôle des feux</li>
+                                <li><strong>Récompense</strong> : fluidité</li>
+                            </ul>
+                            <p style="margin-top: 15px; font-size: 0.8em;">L'agent peut <br><strong>apprendre par
+                                    essai-erreur</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="highlight-box" style="margin-top: 30px; text-align: center;">
+                    <strong>Transformation clé :</strong> Le jumeau numérique devient un <em>banc d'essai</em> où l'IA
+                    peut expérimenter sans risque
+                </div>
+                <aside class="notes">
+                    Nous avons maintenant un simulateur complet et précis. Le modèle ARZ capture la physique, le solveur
+                    WENO5 préserve les discontinuités.<br><br>
+                    Mais ce simulateur reste <strong>passif</strong>. Il peut simuler le trafic, mais il ne peut pas
+                    l'optimiser.<br><br>
+                    C'est là qu'intervient la transformation cruciale : nous allons <strong>encapsuler</strong> ce
+                    simulateur dans un environnement d'apprentissage par renforcement, conforme à l'API standard
+                    Gymnasium.<br><br>
+                    Cette transformation définit trois choses :<br>
+                    - L'<strong>état</strong> : ce que l'agent observe (les densités et vitesses issues du modèle
+                    ARZ).<br>
+                    - L'<strong>action</strong> : ce que l'agent peut faire (maintenir ou changer la phase des
+                    feux).<br>
+                    - La <strong>récompense</strong> : comment on évalue sa décision (la fluidité globale du
+                    trafic).<br><br>
+                    Le jumeau numérique devient ainsi un <strong>bac à sable</strong> où l'agent peut expérimenter des
+                    milliers de stratégies, apprendre de ses erreurs, <strong>sans jamais bloquer un vrai
+                        carrefour</strong>.<br><br>
+                    C'est le cœur de notre approche : utiliser la simulation pour entraîner une IA qui pourra ensuite
+                    être déployée dans le monde réel.
                 </aside>
             </section>
 
@@ -681,7 +744,9 @@
                 <div class="success-box" style="margin-top: 20px; text-align: center;"><strong>&#10003; H1
                         VALIDÉE</strong> - Reproduction fidèle des solutions analytiques</div>
                 <aside class="notes">
-                    Passons aux résultats. D'abord, la validation mathématique.<br><br>
+                    Excellence Monsieur le Président du Jury, honorables membres du Jury,<br>
+                    passons maintenant aux résultats.<br><br>
+                    D'abord, la validation mathématique.<br>
                     Nous avons soumis le modèle à des tests standards (les problèmes de Riemann).<br>
                     Comme vous le voyez, le modèle gère parfaitement les ondes de choc et de détente. Il n'y a pas
                     d'aberration numérique. Le moteur est fiable.
@@ -788,29 +853,6 @@
                 </aside>
             </section>
             <section>
-                <h2>Analyse du Gain</h2>
-                <div class="highlight-box">
-                    <h4>Pourquoi seulement 4.2% ?</h4>
-                    <ul>
-                        <li>Comparaison avec baseline <strong>Webster optimisé</strong> (pas un feu mal réglé)</li>
-                        <li>Modèle physique <strong>très réaliste</strong> avec inertie</li>
-                        <li>Gain <strong>honnête et robuste</strong></li>
-                    </ul>
-                </div>
-                <p style="margin-top: 30px; text-align: center;">&#8594; Valide <strong>partiellement H3</strong> avec
-                    marge d'amélioration</p>
-                <aside class="notes">
-                    Ce gain de 4.2% mérite une analyse. Il peut paraître modeste, mais il est en réalité très
-                    significatif.<br><br>
-                    D'abord, nous nous comparons à une baseline déjà optimisée, la méthode de Webster, qui est une
-                    référence. Nous ne trichons pas en nous comparant à un feu mal réglé.<br><br>
-                    Ensuite, notre simulateur est exigeant : il modélise l'inertie, les temps de réaction. C'est un gain
-                    obtenu dans des conditions réalistes, pas dans un monde idéal.<br><br>
-                    Ce chiffre est donc honnête et robuste. Il représente des minutes de trajet en moins pour des
-                    milliers de personnes, chaque jour.
-                </aside>
-            </section>
-            <section>
                 <h2>Synthèse des Résultats</h2>
                 <div class="three-columns">
                     <div class="card success">
@@ -829,13 +871,21 @@
                         <p class="status partial">&#9681; PARTIELLE</p>
                     </div>
                 </div>
-                <p style="margin-top: 30px; text-align: center;">Le système est <strong>fonctionnel</strong> et prêt
+                <p style="margin-top: 20px; text-align: center; font-size: 0.85em;">
+                    <em>Littérature : gains typiques de 10-20%</em> — Notre marge de progression reste significative
+                </p>
+                <p style="margin-top: 15px; text-align: center;">Le système est <strong>fonctionnel</strong> et prêt
                     pour des optimisations futures</p>
                 <aside class="notes">
-                    En synthèse :<br><br>
+                    Excellence Monsieur le Président du Jury, honorables membres du Jury,<br>
+                    permettez-moi de synthétiser nos résultats.<br><br>
                     Nous avons validé le modèle mathématique (H1).<br>
                     Nous avons validé le réalisme du trafic simulé (H2).<br>
-                    Et nous avons montré que l'agent DQN apporte un gain opérationnel, même s'il reste perfectible (H3).
+                    Et nous avons montré que l'agent DQN apporte un gain opérationnel, même s'il reste perfectible
+                    (H3).<br><br>
+                    Les travaux similaires dans la littérature obtiennent généralement des gains de 10 à 20%. Notre
+                    résultat de 4.2% montre qu'il y a encore une marge de progression — mais la plateforme est là,
+                    fonctionnelle, et prête pour des améliorations futures.
                 </aside>
             </section>
             <section>
@@ -855,7 +905,8 @@
                     </div>
                 </div>
                 <aside class="notes">
-                    Ce travail apporte trois contributions :<br><br>
+                    Excellence Monsieur le Président du Jury, honorables membres du Jury,<br>
+                    pour conclure, ce travail apporte trois contributions majeures :<br><br>
                     1. Un modèle mathématique adapté à notre contexte (motos/voitures).<br>
                     2. Une implémentation numérique performante et stable.<br>
                     3. Une plateforme prête à l'emploi pour entraîner d'autres IA sur nos problématiques locales.
