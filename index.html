@@ -61,7 +61,7 @@
                     Excellence Monsieur le Président du Jury, honorables membres du Jury, chers parents, amis et
                     invités, bonjour.<br><br>
 
-                    Je suis Elonm AHOUANYE, et j'ai le plaisir de vous présenter aujourd'hui notre travail de fin
+                    Je suis Elonm AHOUANYE, et j'ai le plaisir de vous présenter notre travail de fin
                     de formation d'Ingénieur de Conception en Informatique, Logistique et Recherche
                     Opérationnelle.<br><br>
 
@@ -161,6 +161,7 @@
                 </p>
 
                 <aside class="notes">
+                    Monsieur le Président du Jury, honorables membres du Jury,<br><br>
                     Les embouteillages. Nous les connaissons tous. Cette frustration de perdre un temps précieux, coincé
                     dans un go slow.<br><br>
                     Chaque matin, des millions de personnes en Afrique de l'Ouest vivent cette réalité. <br><br>
@@ -219,10 +220,9 @@
                     dans des villes comme Cotonou, Douala ou Lomé se font en <strong>motos</strong>.<br>
 
                     Ces conducteurs ont des comportements très différents des voitures :
-                    ils remplissent chaque espace libre entre les véhicules — c'est le <em>gap-filling</em> —,
-                    et ils changent de file en permanence — c'est l'<em>interweaving</em>.<br><br>
-                    Cette hétérogénéité rend le trafic imprévisible et difficile à modéliser avec les outils
-                    classiques conçus pour des flux homogènes de voitures.
+                    ils remplissent chaque espace libre entre les véhicules  ,
+                    et ils changent de file en permanence .<br><br>
+                    Cette hétérogénéité rend le trafic imprévisible et difficile à modéliser.
                 </aside>
             </section>
             <section>
@@ -252,7 +252,7 @@
                     Ces feux ne voient pas le trafic.<br><br>
 
                     De plus, les modèles de simulation existants ont été conçus pour des flux de voitures homogènes et
-                    ne représentent pas notre réalité motos-voitures.<br><br>
+                    ne représentent pas notre réalité mixte motos-voitures.<br><br>
 
 
                 </aside>
@@ -288,7 +288,7 @@
                     Nous nous sommes posé trois questions simples :<br>
                     1. Peut-on modéliser mathématiquement ce trafic mixte ?<br>
                     2. Peut-on le simuler de manière réaliste sans avoir des capteurs partout ?<br>
-                    3. Une agent intelligent peut-il mieux faire qu'un feu tricolore classique dans ce contexte
+                    3. Un agent intelligent peut-il mieux faire qu'un feu tricolore classique 
                     ?<br><br>
                     Notre réponse : le modèle ARZ pour la physique, l'apprentissage par renforcement pour le contrôle.
                 </aside>
@@ -315,7 +315,7 @@
                 <aside class="notes">
                     Notre approche repose sur des fondations solides, que nous avons adaptées à notre
                     contexte.<br><br>
-                    Les modèles de trafic ont évolué depuis 1955. On est passé du modèle LWR
+                    On est passé du modèle LWR développé en 1955
                     — qui traite le trafic comme l'eau dans un tuyau — au modèle ARZ,
                     développé par <strong>Aw et Rascle en 2000</strong>, puis étendu par <strong>Zhang</strong>,
                     qui prend en compte l'inertie des conducteurs.<br><br>
@@ -525,13 +525,13 @@
                 <aside class="notes">
                     Pour résoudre ces équations, nous utilisons la Méthode des <strong>Volumes Finis</strong>.<br><br>
 
-                    On découpe la route en cellules. Chaque cellule stocke un vecteur d'état moyen : densité et quantité
+                    On découpe la route en cellules ayant chacunes un vecteur d'état : densité et quantité
                     de
                     mouvement.<br><br>
 
-                    Les Volumes Finis font intervenir une variable F, le <strong>flux numérique</strong> grand F<br><br>
+                    Les Volumes Finis font intervenir une variable F, le <strong>flux numérique</strong>  F<br><br>
 
-                    Tout le défi est là : pour calculer l'état du trafic à l'instant suivant U(i+1), on a besoin de
+                    Pour calculer l'état du trafic à l'instant suivant U(i+1), on a besoin de
                     connaître
                     le flux aux frontières symbolisé par F i + 1 demi(1/2).
                     Mais comme on ne stocke que des moyennes Ui, la valeur exacte à l'interface (i+ 1/2) est inconnue.
@@ -572,16 +572,16 @@
                 <aside class="notes">
                     C'est ici qu'intervient la reconstruction.<br><br>
 
-                    Si on utilise une méthode simple (ordre 1), on <strong>diffuse</strong> l'information.<br>
+                    Si on utilise une méthode simple d'ordre 1, on <strong>diffuse</strong> l'information.<br>
                     Observez la courbe bleue : un bouchon qui devrait être un "mur" net devient une colline étalée.
                     C'est physiquement faux.<br><br>
 
                     D'où notre choix : la reconstruction <strong>WENO5</strong> (ordre 5).<br>
-                    Le principe est astucieux, au lieu d'utiliser une seule cellule, on fait une moyenne pondérée sur
+                    Au lieu d'utiliser une seule cellule, on fait une moyenne pondérée sur
                     plusieurs cellules comme le décrit l'équation à gauche.<br><br>
 
                     Résultat : la courbe rouge reste <strong>nette</strong>.
-                    Cette précision est cruciale pour que l'IA puisse "voir" les bouchons exactement là où ils sont.
+                    Cette précision est nécessaire pour que l'IA puisse "voir" les bouchons exactement là où ils sont.
                 </aside>
             </section>
 
@@ -628,11 +628,10 @@
                 <aside class="notes">
                     Nous avons maintenant un simulateur complet et précis. Le modèle ARZ capture la physique, le solveur
                     préserve les discontinuités.<br><br>
-                    Mais ce simulateur reste <strong>passif</strong>. Il peut simuler le trafic, mais il ne peut pas
+                    Mais ce simulateur  peut simuler le trafic, mais il ne peut pas
                     l'optimiser.<br><br>
                     C'est là qu'intervient la transformation cruciale : nous allons <strong>encapsuler</strong> ce
-                    simulateur dans un environnement d'apprentissage par renforcement, conforme à l'API standard
-                    Gymnasium.<br><br>
+                    simulateur dans un environnement d'apprentissage par renforcement.<br><br>
 
 
                     C'est le cœur de notre approche : utiliser la simulation pour entraîner une IA qui pourra ensuite
@@ -661,13 +660,13 @@
                     </div>
                 </div>
                 <aside class="notes">
-                    Pour l'IA, nous avons utilisé l'agent DQN (Deep Q-Network) une méthode d'apprentissage par
-                    renforcemtn développé par Google DeepMind en 2015<br><br>
+                    Pour l'IA, nous avons utilisé l'agent Deep Q-Network une méthode d'apprentissage par
+                    renforcemt développé par Google DeepMind en 2015<br><br>
                     L'agent DQN est comme un policier au carrefour. Il regarde l'état du trafic (densités,
                     vitesses).<br>
                     Il prend une action : laisser vert ou passer au rouge.<br>
                     Et il reçoit une récompense : plus le trafic coule, plus il gagne de points. Il apprend ainsi suite
-                    à ses échecs à maximiser la fluidité globale.
+                    à ses érreurs à maximiser la fluidité globale.
                 </aside>
             </section>
             <section>
@@ -725,13 +724,13 @@
                 <aside class="notes">
                     La théorie fonctionne. Mais le modèle peut-il reproduire un vrai trafic de ville ?<br>
                     C'est l'objet de la validation H2.<br><br>
-                    Ces instantanés produites en représentant le réseau routier en forme de graphe montrent l'évolution
-                    temporelle du trafic sur le corridor de Victoria Island.
+                    Ces instantanés produites en représentant le réseau routier sous forme de graphe montrent l'évolution
+                    temporelle du trafic.
                     On observe clairement la propagation des ondes de choc (zones rouges) qui remontent le
                     courant.<br><br>
                     Le modèle reproduit les trois régimes de trafic : fluide, congestionné, et bouchonné.
                     Cela confirme que notre jumeau numérique reproduit correctement le trafic.<br><br>
-                    Pour mieux visualiser cette dynamique, voici une démonstration interactive.
+                    
                 </aside>
             </section>
 
@@ -742,7 +741,6 @@
                 <!-- L'utilisateur peut interagir avec la carte (zoom, pan) grâce à data-background-interactive -->
 
                 <aside class="notes">
-                    Voici maintenant une démonstration interactive de ce corridor.<br><br>
                     Nous nous sommes entraînés sur Victoria Island à Lagos,
                     la plus grande ville d'Afrique et l'une des plus congestionnées d'Afrique de l'Ouest.<br><br>
                     Ce que vous voyez ici, c'est notre jumeau numérique en action :<br>
@@ -750,7 +748,7 @@
                     - Les <strong>traînées bleues</strong> représentent les voitures.<br>
                     - Les <strong>colonnes 3D</strong> aux intersections sont les feux de signalisation.<br><br>
                     Observez comment le trafic ralentit aux intersections et comment les ondes de densité
-                    se propagent vers l'amont. C'est cette dynamique que notre agent RL apprend à optimiser.
+                    se propagent vers l'amont. C'est cette dynamique que notre agent RL doit réussir à optimiser.
                 </aside>
             </section>
 
@@ -817,9 +815,9 @@
                 </p>
                 <aside class="notes">
                     Passons aux chiffres.<br><br>
-                    Nous avons comparé l'agent DQN à un feu à temps fixe bien réglé (méthode Webster).<br>
+                    Nous avons comparé l'agent DQN à un feu à temps fixe.<br>
                     En moyenne, l'agent DQN améliore le flux de 4.2%.<br>
-                    Mais surtout, en situation de saturation (quand c'est la crise), le gain monte à près de 6%.<br><br>
+                    Mais surtout, en situation de saturation , le gain monte à près de 6%.<br><br>
                     Pour un Lagosien qui se déplace 5 jours sur 7, cela représente environ 25 heures récupérées par an.
                     Sur les 600 heures perdues annuellement, c'est un premier pas concret.
                 </aside>
@@ -906,8 +904,8 @@
                     </div>
                 </div>
                 <aside class="notes">
-                    Ce travail a ses limites.<br><br>
-                    La principale : le manque de données réelles pour calibrer finement les
+                    
+                    La principale limite : le manque de données réelles pour calibrer finement les
                     paramètres.<br><br>
                     Mais les perspectives sont là : tester d'autres algorithmes d'IA, étendre la simulation à
                     tout un quartier, et à terme, connecter de vrais capteurs.<br><br>
@@ -959,9 +957,9 @@
                     Un jumeau numérique complet voit, comprend, et agit en temps réel.<br><br>
                     Ce que nous avons construit aujourd'hui, c'est le <strong>cerveau</strong> de ce système. Le moteur
                     de décision, la physique du trafic, l'intelligence artificielle.<br><br>
-                    Ce qui manque ? Des capteurs, des données massives pour affiner les paramètres, et une communauté de
+                    Ce qui reste à venir. Des capteurs, des données massives pour affiner les paramètres, et une communauté de
                     chercheurs et d'ingénieurs locaux pour porter ce projet.<br><br>
-                    Mais la fondation est là. Elle est solide. Et elle est prête à être connectée au monde réel.
+                    
                 </aside>
             </section>
             <section>
@@ -976,7 +974,7 @@
                     Il démontre qu'il est possible de construire ici, en Afrique, des solutions technologiques de pointe
                     qui répondent précisément à nos propres défis, au lieu de simplement importer des modèles qui ne
                     nous correspondent pas.<br><br>
-                    C'est la preuve qu'une ingénierie locale et ambitieuse est non seulement possible, mais
+                    C'est la preuve qu'une ingénierie locale  est non seulement possible, mais
                     nécessaire.<br><br>
                     Nous vous remercions de votre attention et sommes maintenant à votre disposition pour répondre à vos
                     questions.
