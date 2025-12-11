@@ -89,7 +89,7 @@
                     Nous commencerons par le contexte et une revue de la littérature, pour comprendre pourquoi les
                     solutions actuelles ne suffisent pas.<br>
                     Ensuite, la méthodologie indiquant comment nous avons construit ce simulateur.<br>
-                    Puis les résultats, pour voir si l'IA apporte vraiment un gain.<br>
+                    Les résultats, pour voir si l'IA apporte vraiment un gain.<br>
                     Et enfin, les perspectives que ce travail ouvre pour nos villes.
                 </aside>
             </section>
@@ -161,27 +161,23 @@
                 </p>
 
                 <aside class="notes">
-                    Qui, dans cette salle, n'a jamais ressenti la frustration de perdre un temps précieux dans les
-                    embouteillages ?
-                    Sachez que vous n'êtes pas seuls.<br><br>
-                    Chaque matin, des millions de personnes en Afrique de l'Ouest, sont
-                    coincés dans des embouteillages interminables, les go slow.<br><br>
+                    Les embouteillages. Nous les connaissons tous. Cette frustration de perdre un temps précieux, coincé dans le trafic.<br><br>
+                    Chaque matin, des millions de personnes en Afrique de l'Ouest vivent cette réalité. Les go slow.<br><br>
 
-                    À Lagos — la plus grande ville d'Afrique — les habitants perdent en moyenne
+                    À Lagos, la plus grande ville d'Afrique, les habitants perdent en moyenne
                     <strong>2 heures 21 minutes PAR JOUR</strong> dans les bouchons.
                     Pas par semaine. PAR JOUR.<br><br>
 
-                    ça représente plus de <strong>850 heures par an</strong>.
-                    C'est l'équivalent de 35 jours complets passés... à ne rien faire d'autre qu'attendre.<br><br>
+                    Plus de <strong>850 heures par an</strong>.
+                    35 jours complets passés... à attendre.<br><br>
 
-                    Et le coût ? <strong>4,8 milliards de dollars</strong> perdus chaque année,
-                    soit près de <strong>2 900 milliards de francs CFA</strong>.
-                    Pour une seule ville. C'est 4% du PIB du Nigeria entier qui part en fumée dans les pots
-                    d'échappement.<br><br>
+                    Le coût ? <strong>4,8 milliards de dollars</strong> perdus chaque année.
+                    Près de <strong>2 900 milliards de francs CFA</strong>.
+                    Pour une seule ville. 4% du PIB du Nigeria.<br><br>
 
-                    Et chez nous au Bénin ? 26,8 décès routiers pour 100 000 habitants.
+                    Au Bénin ? 26,8 décès routiers pour 100 000 habitants.
 
-                    C'est ce problème — à la fois humain et économique — qui a motivé notre travail.
+                    Ce problème, à la fois humain et économique, a motivé notre travail.
                 </aside>
             </section>
 
@@ -246,18 +242,15 @@
                     <strong>GAP :</strong> Aucun jumeau numérique adapté au contexte ouest-africain
                 </div>
                 <aside class="notes">
-                    Le problème, c'est que nos systèmes de gestion actuels ne sont pas adaptés à cette réalité.<br><br>
+                    Nos systèmes de gestion actuels ne sont pas adaptés à cette réalité.<br><br>
 
-                    Prenez les feux tricolores : ils fonctionnent à temps fixe.
-                    Ils passent au vert pendant 30 secondes, puis au rouge pendant 30 secondes...
-                    peu importe qu'il y ait 10 voitures ou 500 motos qui attendent.
-                    Ils sont "aveugles" — ils ne voient pas le trafic réel.<br><br>
+                    Les feux tricolores fonctionnent à temps fixe.
+                    30 secondes au vert, 30 secondes au rouge, peu importe qu'il y ait 10 voitures ou 500 motos.
+                    Ils sont aveugles. Ils ne voient pas le trafic réel.<br><br>
 
-                    Et côté outils scientifiques ? Les modèles de simulation existants ont été conçus
-                    pour des flux de voitures homogènes, comme en Europe ou aux États-Unis.
-                    Ils ne savent tout simplement pas représenter notre réalité mixte motos-voitures.<br><br>
+                    Les modèles de simulation existants ont été conçus pour des flux de voitures homogènes, comme en Europe ou aux États-Unis, et ne représentent pas notre réalité mixte motos-voitures.<br><br>
 
-                    C'est ce double gap — technologique et scientifique — que nous avons voulu combler.
+                    Ce double gap, technologique et scientifique, nous avons voulu le combler.
                 </aside>
             </section>
             <section>
@@ -293,8 +286,7 @@
                     2. Peut-on le simuler de manière réaliste sans avoir des capteurs partout ?<br>
                     3. Une agent intelligent peut-elle faire mieux qu'un feu tricolore classique dans ce contexte
                     ?<br><br>
-                    Pour y répondre, nous avons choisi le modèle ARZ pour la physique du trafic, et de
-                    l'apprentissage par renforcement pour le contrôle intelligent.
+                    Notre réponse : le modèle ARZ pour la physique, l'apprentissage par renforcement pour le contrôle.
                 </aside>
             </section>
             <section>
@@ -404,13 +396,10 @@
                     Excellence Monsieur le Président du Jury, honorables membres du Jury,<br>
                     permettez-moi maintenant de vous présenter notre méthodologie.<br><br>
                     Voici l'architecture du système que nous avons développé.<br><br>
-                    D'abord, le <strong>Modèle Physique ARZ</strong> : ce sont les équations qui décrivent le mouvement
-                    du trafic.<br>
-                    Ensuite, le <strong>Solveur Numérique</strong> : c'est le code qui calcule l'évolution du trafic pas
-                    à pas.<br>
-                    Et enfin, l'<strong>Agent DQN</strong> : c'est le cerveau qui contrôle les feux.<br><br>
-                    C'est l'ensemble de ces trois blocs qui constitue notre "Jumeau Numérique".<br>
-                    <!-- Imaginez un lundi matin au carrefour IITA : pas de policier, le système gère tout seul. -->
+                    Le <strong>Modèle Physique ARZ</strong> décrit le mouvement du trafic par des équations.<br>
+                    Le <strong>Solveur Numérique</strong> calcule l'évolution du trafic pas à pas.<br>
+                    L'<strong>Agent DQN</strong> contrôle les feux de manière intelligente.<br><br>
+                    Ces trois blocs ensemble constituent notre Jumeau Numérique.
                 </aside>
             </section>
             <section>
@@ -436,24 +425,11 @@
                     <strong>\(\tau\)</strong> : temps de relaxation
                 </p>
                 <aside class="notes">
-                    Nous utilisons le modèle ARZ multi-classes, qui se compose de deux
-                    équations fondamentales pour chaque classe de véhicules — motos et voitures.<br><br>
-                    La première équation, c'est la <strong>conservation de la masse</strong>. Elle traduit simplement
-                    que les véhicules ne disparaissent pas. Ils s'écoulent d'un endroit à un autre.<br>
-                    Le terme « rho fois v » que vous voyez, c'est le <strong>flux de véhicules</strong> — le nombre de
-                    véhicules qui passent par seconde.<br>
-                    Il y a une relation fondamentale : quand la densité augmente (plus de véhicules), la vitesse diminue
-                    (on ralentit). C'est cette relation inverse qui garantit la conservation.<br><br>
-                    La deuxième équation décrit la <strong>dynamique de la vitesse</strong>. Elle explique comment la
-                    propriété w — qui combine à la fois la vitesse et une sorte d'anticipation du conducteur — est
-                    transportée par le
-                    flux de trafic.<br><br>
-                    Le terme de droite, c'est ce qu'on appelle la <strong>relaxation</strong>. Il dit que les
-                    conducteurs ne gardent pas une vitesse fixe. Non. Ils ajustent constamment leur vitesse vers une
-                    vitesse d'équilibre,
-                    qui dépend directement de la densité autour d'eux.<br>
-                    C'est ce comportement réaliste qui rend le modèle si puissant.<br><br>
-                    Maintenant, comment résoudre ces équations numériquement ? C'est ce que nous allons voir.
+                    Le modèle ARZ multi-classes repose sur deux équations pour chaque classe de véhicules, motos et voitures.<br><br>
+                    La première, la <strong>conservation de la masse</strong> : les véhicules ne disparaissent pas, ils s'écoulent d'un point à un autre. Plus la densité augmente, plus la vitesse diminue. Logique.<br><br>
+                    La deuxième, la <strong>dynamique de la vitesse</strong> : les conducteurs ajustent constamment leur vitesse vers un équilibre qui dépend de la densité autour d'eux. Pas de vitesse fixe. Une adaptation permanente.<br><br>
+                    Ce comportement réaliste rend le modèle puissant.<br>
+                    Maintenant, comment résoudre ces équations numériquement ?
                 </aside>
             </section>
             <section>
@@ -538,25 +514,13 @@
                 </div>
 
                 <aside class="notes">
-                    Pour résoudre ce système d'équations, nous utilisons la méthode des <strong>Volumes
-                        Finis</strong>.<br><br>
+                    Pour résoudre ces équations, nous utilisons les <strong>Volumes Finis</strong>.<br><br>
 
-                    On découpe la route en petites cellules. Dans chaque cellule, on stocke un <strong>vecteur
-                        d'état</strong> U.<br>
-                    Ce vecteur contient deux choses : la <strong>densité</strong> rho (combien de véhicules par
-                    mètre) et la <strong>quantité de mouvement</strong> y = rho fois v.<br><br>
+                    On découpe la route en cellules. Chaque cellule stocke un vecteur d'état : densité et quantité de mouvement.<br><br>
 
-                    L'équation dit simplement ceci : la variation de ce vecteur d'état dans une cellule ne dépend que de
-                    ce qui entre et sort par ses frontières.<br>
-                    C'est ce qu'on appelle le <strong>flux numérique</strong> F — attention, ce n'est pas
-                    directement le "débit de voitures", mais le taux de transfert mathématique de nos deux grandeurs
-                    conservées.<br><br>
+                    Les Volumes Finis font intervenir une variable F, le <strong>flux numérique</strong>, qui représente ce qui entre et sort de chaque cellule.<br><br>
 
-                    Tout le défi est là : on connaît les moyennes dans chaque cellule, mais pas la valeur exacte à la
-                    frontière.<br>
-                    Il faut donc <strong>reconstruire</strong> ce flux F à l'interface. Si on fait
-                    ça grossièrement, les ondes de choc deviennent floues.<br>
-                    C'est pourquoi nous avons besoin d'une méthode de haute précision : le schéma WENO5.
+                    On connaît les moyennes dans chaque cellule, mais pas la valeur exacte aux frontières. Il faut donc reconstruire ce flux. Si on le fait grossièrement, les ondes de choc deviennent floues. D'où le besoin du schéma WENO5.
                 </aside>
             </section>
             <section>
@@ -597,7 +561,7 @@
                     Regardez l'animation : un bouchon qui devrait être net devient flou, étalé. On perd la
                     physique.<br><br>
 
-                    C'est pourquoi nous utilisons la reconstruction <strong>WENO5</strong> — ordre 5.<br>
+                    D'où notre choix : la reconstruction <strong>WENO5</strong>, ordre 5.<br>
                     La formule à gauche montre le principe : on calcule une moyenne pondérée de trois reconstructions
                     candidates.<br>
                     Les coefficients oméga s'adaptent <strong>automatiquement</strong> : si une discontinuité (un
@@ -845,7 +809,7 @@
                     <strong>en situation de crise</strong>
                 </p>
                 <aside class="notes">
-                    Concrètement, qu'est-ce que ça donne ?<br><br>
+                    Passons aux chiffres.<br><br>
                     Nous avons comparé l'agent DQN à un feu à temps fixe bien réglé (méthode Webster).<br>
                     En moyenne, l'agent DQN améliore le flux de 4.2%.<br>
                     Mais surtout, en situation de saturation (quand c'est la crise), le gain monte à près de 6%.<br>
@@ -932,13 +896,12 @@
                     </div>
                 </div>
                 <aside class="notes">
-                    Bien sûr, tout n'est pas parfait.<br><br>
-                    La limite principale reste le manque de données réelles pour calibrer finement les
+                    Ce travail a ses limites.<br><br>
+                    La principale : le manque de données réelles pour calibrer finement les
                     paramètres.<br><br>
-                    Mais les perspectives sont là : on peut tester d'autres algorithmes d'IA, étendre la simulation à
+                    Mais les perspectives sont là : tester d'autres algorithmes d'IA, étendre la simulation à
                     tout un quartier, et à terme, connecter de vrais capteurs.<br><br>
-                    Et justement, permettez-moi de vous montrer concrètement à quoi ressemblerait l'avenir que nous
-                    voulons construire...
+                    Laissez-moi vous montrer cet avenir.
                 </aside>
             </section>
 
@@ -983,8 +946,7 @@
                     <em>sait</em> qu'une vague de trafic arrive de Tankpè. Il <em>sait</em> aussi que le flux vers
                     l'Étoile Rouge est en train de se saturer. Et il décide : « Je vais retenir le flux Nord 15 secondes
                     de plus pour laisser passer la vague Est. »<br><br>
-                    C'est cela, un jumeau numérique complet : un système qui voit, qui comprend, et qui agit en temps
-                    réel.<br><br>
+                    Un jumeau numérique complet voit, comprend, et agit en temps réel.<br><br>
                     Ce que nous avons construit aujourd'hui, c'est le <strong>cerveau</strong> de ce système. Le moteur
                     de décision, la physique du trafic, l'intelligence artificielle.<br><br>
                     Ce qui manque ? Des capteurs, des données massives pour affiner les paramètres, et une communauté de
